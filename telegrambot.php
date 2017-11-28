@@ -83,6 +83,6 @@ function uploads($file_id) {
 	if($result===null) throw new Exception($body);
 	if(!$result->status_code==200) throw new Exception($body);
 
-	return $result;//->result;sdfsdfsf
+	return $result->data;//->result;sdfsdfsf
 }
 ?>
