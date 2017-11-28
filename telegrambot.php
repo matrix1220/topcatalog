@@ -71,10 +71,9 @@ class Telegrambot {
 function uploads($url) {
 		$sock = fsockopen("tcp://uploads.im", 443, $errno, $errstr, 30);
 		if (!$sock) throw new Exception("$errstr ($errno)");
-		fwrite($sock, "POST /bot".TOKEN.$method." HTTP/1.0\r\n");
+		fwrite($sock, "POST /?upload=".urlencode($url)." HTTP/1.0\r\n");
 		fwrite($sock, "Host: uploads.im\r\n");
 		fwrite($sock, "Content-type: application/json\r\n");
-		fwrite($sock, "Content-length: " . strlen($data) . "\r\n");
 		fwrite($sock, "\r\n");
 		$body = ""; while (!feof($sock)) $body .= fgets($sock, 4096);
 		$body = trim(substr($body, strpos($body, "\r\n\r\n")));
