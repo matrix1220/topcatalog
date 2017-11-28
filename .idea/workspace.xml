@@ -28,34 +28,38 @@
       <file leaf-file-name="access-bot.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/access-bot.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53602815" vertical-offset="8705" max-vertical-offset="14807">
-              <caret line="538" column="110" selection-start-line="538" selection-start-column="110" selection-end-line="538" selection-end-column="110" />
+            <state vertical-scroll-proportion="0.53602815" vertical-offset="8688" max-vertical-offset="14790">
+              <caret line="537" column="110" selection-start-line="537" selection-start-column="110" selection-end-line="537" selection-end-column="110" />
               <folding>
-                <marker date="1511881244858" expanded="true" signature="3491:3561" placeholder="select likes..channels..." />
-                <marker date="1511881244858" expanded="true" signature="3835:3905" placeholder="select likes..channels..." />
-                <marker date="1511881244858" expanded="true" signature="4169:4200" placeholder="select count..users..." />
-                <marker date="1511881244858" expanded="true" signature="4402:4482" placeholder="select count..followers..." />
-                <marker date="1511881244858" expanded="true" signature="4758:4811" placeholder="select id,ba..users..." />
-                <marker date="1511881244858" expanded="true" signature="5136:5189" placeholder="select id,ba..users..." />
-                <marker date="1511881244858" expanded="true" signature="5551:5733" placeholder="select count..likes..." />
-                <marker date="1511881244858" expanded="true" signature="6561:6610" placeholder="update users..." />
-                <marker date="1511881244858" expanded="true" signature="15144:15202" placeholder="update users..." />
-                <marker date="1511881244858" expanded="true" signature="15489:15547" placeholder="update users..." />
-                <marker date="1511881244858" expanded="true" signature="16939:16987" placeholder="select id fr..channels..." />
-                <marker date="1511881244858" expanded="true" signature="22663:22706" placeholder="update chann..." />
-                <marker date="1511881244858" expanded="true" signature="26077:26135" placeholder="update users..." />
-                <marker date="1511881244858" expanded="true" signature="27179:27227" placeholder="update users..." />
-                <marker date="1511881244858" expanded="true" signature="30054:30097" placeholder="update chann..." />
-                <marker date="1511881244858" expanded="true" signature="30767:30867" placeholder="select * fro..channels..." />
-                <marker date="1511881244858" expanded="true" signature="32661:32760" placeholder="select * fro..channels..." />
-                <marker date="1511881244858" expanded="true" signature="34850:34896" placeholder="select * fro..lottery..." />
-                <marker date="1511881244858" expanded="true" signature="37395:37456" placeholder="..." />
-                <marker date="1511881244858" expanded="true" signature="38275:38355" placeholder="select * fro..channels..." />
-                <marker date="1511881244858" expanded="true" signature="40677:40727" placeholder="select count..followers..." />
-                <marker date="1511881244858" expanded="true" signature="44513:44563" placeholder="update users..." />
-                <marker date="1511881244858" expanded="true" signature="44732:44778" placeholder="select * fro..lottery..." />
-                <marker date="1511881244858" expanded="true" signature="45466:45506" placeholder="update users..." />
-                <marker date="1511881244858" expanded="true" signature="46216:46259" placeholder="update users..." />
+                <marker date="1511887611374" expanded="true" signature="3529:3599" placeholder="select likes..channels..." />
+                <marker date="1511887611374" expanded="true" signature="3873:3943" placeholder="select likes..channels..." />
+                <marker date="1511887611374" expanded="true" signature="4207:4238" placeholder="select count..users..." />
+                <marker date="1511887611374" expanded="true" signature="4440:4520" placeholder="select count..followers..." />
+                <marker date="1511887611374" expanded="true" signature="4884:4937" placeholder="select id,ba..users..." />
+                <marker date="1511887611374" expanded="true" signature="5174:5227" placeholder="select id,ba..users..." />
+                <marker date="1511887611374" expanded="true" signature="5589:5771" placeholder="select count..likes..." />
+                <marker date="1511887611374" expanded="true" signature="6599:6648" placeholder="update users..." />
+                <marker date="1511887611374" expanded="true" signature="15182:15240" placeholder="update users..." />
+                <marker date="1511887611374" expanded="true" signature="15527:15585" placeholder="update users..." />
+                <marker date="1511887611374" expanded="true" signature="16977:17025" placeholder="select id fr..channels..." />
+                <marker date="1511887611374" expanded="true" signature="20296:21359" placeholder="..." />
+                <marker date="1511887611374" expanded="true" signature="20296:21267" placeholder="..." />
+                <marker date="1511887611374" expanded="true" signature="20296:21172" placeholder="..." />
+                <marker date="1511887611374" expanded="true" signature="20296:20985" placeholder="..." />
+                <marker date="1511887611374" expanded="true" signature="22638:22681" placeholder="update chann..." />
+                <marker date="1511887611374" expanded="true" signature="26052:26110" placeholder="update users..." />
+                <marker date="1511887611374" expanded="true" signature="27154:27202" placeholder="update users..." />
+                <marker date="1511887611374" expanded="true" signature="30029:30072" placeholder="update chann..." />
+                <marker date="1511887611374" expanded="true" signature="30742:30842" placeholder="select * fro..channels..." />
+                <marker date="1511887611374" expanded="true" signature="32636:32735" placeholder="select * fro..channels..." />
+                <marker date="1511887611374" expanded="true" signature="34825:34871" placeholder="select * fro..lottery..." />
+                <marker date="1511887611374" expanded="true" signature="37370:37431" placeholder="..." />
+                <marker date="1511887611374" expanded="true" signature="38250:38330" placeholder="select * fro..channels..." />
+                <marker date="1511887611374" expanded="true" signature="40652:40702" placeholder="select count..followers..." />
+                <marker date="1511887611374" expanded="true" signature="44488:44538" placeholder="update users..." />
+                <marker date="1511887611374" expanded="true" signature="44707:44753" placeholder="select * fro..lottery..." />
+                <marker date="1511887611374" expanded="true" signature="45441:45481" placeholder="update users..." />
+                <marker date="1511887611374" expanded="true" signature="46191:46234" placeholder="update users..." />
               </folding>
             </state>
           </provider>
@@ -156,8 +160,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -207,65 +211,73 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13515">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1511881244858" expanded="true" signature="3491:3561" placeholder="select likes..channels..." />
-            <marker date="1511881244858" expanded="true" signature="3835:3905" placeholder="select likes..channels..." />
-            <marker date="1511881244858" expanded="true" signature="4169:4200" placeholder="select count..users..." />
-            <marker date="1511881244858" expanded="true" signature="4402:4482" placeholder="select count..followers..." />
-            <marker date="1511881244858" expanded="true" signature="4758:4811" placeholder="select id,ba..users..." />
-            <marker date="1511881244858" expanded="true" signature="5136:5189" placeholder="select id,ba..users..." />
-            <marker date="1511881244858" expanded="true" signature="5551:5733" placeholder="select count..likes..." />
-            <marker date="1511881244858" expanded="true" signature="6561:6610" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="15144:15202" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="15489:15547" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="16939:16987" placeholder="select id fr..channels..." />
-            <marker date="1511881244858" expanded="true" signature="22663:22706" placeholder="update chann..." />
-            <marker date="1511881244858" expanded="true" signature="26077:26135" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="27179:27227" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="30054:30097" placeholder="update chann..." />
-            <marker date="1511881244858" expanded="true" signature="30767:30867" placeholder="select * fro..channels..." />
-            <marker date="1511881244858" expanded="true" signature="32661:32760" placeholder="select * fro..channels..." />
-            <marker date="1511881244858" expanded="true" signature="34850:34896" placeholder="select * fro..lottery..." />
-            <marker date="1511881244858" expanded="true" signature="37395:37456" placeholder="..." />
-            <marker date="1511881244858" expanded="true" signature="38275:38355" placeholder="select * fro..channels..." />
-            <marker date="1511881244858" expanded="true" signature="40677:40727" placeholder="select count..followers..." />
-            <marker date="1511881244858" expanded="true" signature="44513:44563" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="44732:44778" placeholder="select * fro..lottery..." />
-            <marker date="1511881244858" expanded="true" signature="45466:45506" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="46216:46259" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="3529:3599" placeholder="select likes..channels..." />
+            <marker date="1511887611374" expanded="true" signature="3873:3943" placeholder="select likes..channels..." />
+            <marker date="1511887611374" expanded="true" signature="4207:4238" placeholder="select count..users..." />
+            <marker date="1511887611374" expanded="true" signature="4440:4520" placeholder="select count..followers..." />
+            <marker date="1511887611374" expanded="true" signature="4884:4937" placeholder="select id,ba..users..." />
+            <marker date="1511887611374" expanded="true" signature="5174:5227" placeholder="select id,ba..users..." />
+            <marker date="1511887611374" expanded="true" signature="5589:5771" placeholder="select count..likes..." />
+            <marker date="1511887611374" expanded="true" signature="6599:6648" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="15182:15240" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="15527:15585" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="16977:17025" placeholder="select id fr..channels..." />
+            <marker date="1511887611374" expanded="true" signature="20296:21359" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="20296:21267" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="20296:21172" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="20296:20985" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="22638:22681" placeholder="update chann..." />
+            <marker date="1511887611374" expanded="true" signature="26052:26110" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="27154:27202" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="30029:30072" placeholder="update chann..." />
+            <marker date="1511887611374" expanded="true" signature="30742:30842" placeholder="select * fro..channels..." />
+            <marker date="1511887611374" expanded="true" signature="32636:32735" placeholder="select * fro..channels..." />
+            <marker date="1511887611374" expanded="true" signature="34825:34871" placeholder="select * fro..lottery..." />
+            <marker date="1511887611374" expanded="true" signature="37370:37431" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="38250:38330" placeholder="select * fro..channels..." />
+            <marker date="1511887611374" expanded="true" signature="40652:40702" placeholder="select count..followers..." />
+            <marker date="1511887611374" expanded="true" signature="44488:44538" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="44707:44753" placeholder="select * fro..lottery..." />
+            <marker date="1511887611374" expanded="true" signature="45441:45481" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="46191:46234" placeholder="update users..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/access-bot.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53602815" vertical-offset="8705" max-vertical-offset="14807">
-          <caret line="538" column="110" selection-start-line="538" selection-start-column="110" selection-end-line="538" selection-end-column="110" />
+        <state vertical-scroll-proportion="0.53602815" vertical-offset="8688" max-vertical-offset="14790">
+          <caret line="537" column="110" selection-start-line="537" selection-start-column="110" selection-end-line="537" selection-end-column="110" />
           <folding>
-            <marker date="1511881244858" expanded="true" signature="3491:3561" placeholder="select likes..channels..." />
-            <marker date="1511881244858" expanded="true" signature="3835:3905" placeholder="select likes..channels..." />
-            <marker date="1511881244858" expanded="true" signature="4169:4200" placeholder="select count..users..." />
-            <marker date="1511881244858" expanded="true" signature="4402:4482" placeholder="select count..followers..." />
-            <marker date="1511881244858" expanded="true" signature="4758:4811" placeholder="select id,ba..users..." />
-            <marker date="1511881244858" expanded="true" signature="5136:5189" placeholder="select id,ba..users..." />
-            <marker date="1511881244858" expanded="true" signature="5551:5733" placeholder="select count..likes..." />
-            <marker date="1511881244858" expanded="true" signature="6561:6610" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="15144:15202" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="15489:15547" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="16939:16987" placeholder="select id fr..channels..." />
-            <marker date="1511881244858" expanded="true" signature="22663:22706" placeholder="update chann..." />
-            <marker date="1511881244858" expanded="true" signature="26077:26135" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="27179:27227" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="30054:30097" placeholder="update chann..." />
-            <marker date="1511881244858" expanded="true" signature="30767:30867" placeholder="select * fro..channels..." />
-            <marker date="1511881244858" expanded="true" signature="32661:32760" placeholder="select * fro..channels..." />
-            <marker date="1511881244858" expanded="true" signature="34850:34896" placeholder="select * fro..lottery..." />
-            <marker date="1511881244858" expanded="true" signature="37395:37456" placeholder="..." />
-            <marker date="1511881244858" expanded="true" signature="38275:38355" placeholder="select * fro..channels..." />
-            <marker date="1511881244858" expanded="true" signature="40677:40727" placeholder="select count..followers..." />
-            <marker date="1511881244858" expanded="true" signature="44513:44563" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="44732:44778" placeholder="select * fro..lottery..." />
-            <marker date="1511881244858" expanded="true" signature="45466:45506" placeholder="update users..." />
-            <marker date="1511881244858" expanded="true" signature="46216:46259" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="3529:3599" placeholder="select likes..channels..." />
+            <marker date="1511887611374" expanded="true" signature="3873:3943" placeholder="select likes..channels..." />
+            <marker date="1511887611374" expanded="true" signature="4207:4238" placeholder="select count..users..." />
+            <marker date="1511887611374" expanded="true" signature="4440:4520" placeholder="select count..followers..." />
+            <marker date="1511887611374" expanded="true" signature="4884:4937" placeholder="select id,ba..users..." />
+            <marker date="1511887611374" expanded="true" signature="5174:5227" placeholder="select id,ba..users..." />
+            <marker date="1511887611374" expanded="true" signature="5589:5771" placeholder="select count..likes..." />
+            <marker date="1511887611374" expanded="true" signature="6599:6648" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="15182:15240" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="15527:15585" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="16977:17025" placeholder="select id fr..channels..." />
+            <marker date="1511887611374" expanded="true" signature="20296:21359" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="20296:21267" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="20296:21172" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="20296:20985" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="22638:22681" placeholder="update chann..." />
+            <marker date="1511887611374" expanded="true" signature="26052:26110" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="27154:27202" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="30029:30072" placeholder="update chann..." />
+            <marker date="1511887611374" expanded="true" signature="30742:30842" placeholder="select * fro..channels..." />
+            <marker date="1511887611374" expanded="true" signature="32636:32735" placeholder="select * fro..channels..." />
+            <marker date="1511887611374" expanded="true" signature="34825:34871" placeholder="select * fro..lottery..." />
+            <marker date="1511887611374" expanded="true" signature="37370:37431" placeholder="..." />
+            <marker date="1511887611374" expanded="true" signature="38250:38330" placeholder="select * fro..channels..." />
+            <marker date="1511887611374" expanded="true" signature="40652:40702" placeholder="select count..followers..." />
+            <marker date="1511887611374" expanded="true" signature="44488:44538" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="44707:44753" placeholder="select * fro..lottery..." />
+            <marker date="1511887611374" expanded="true" signature="45441:45481" placeholder="update users..." />
+            <marker date="1511887611374" expanded="true" signature="46191:46234" placeholder="update users..." />
           </folding>
         </state>
       </provider>
