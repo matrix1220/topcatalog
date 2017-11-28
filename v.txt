@@ -1,0 +1,232 @@
+			if($action[0]==9) {
+				if($message->text==B_BACK) {
+					$db->update('users')->set(['action'=>0])->where('id='.$from->id)->exec();
+					$bot->sendMessage($message->from->id,T_0,$bot->replyKeyboard($MAIN_KEYBOARD));
+				} elseif($message->text==B_THE_CHANNEL) {
+					$db->update('users')->set(['action'=>10])->where('id='.$from->id)->exec();
+					$bot->sendMessage($from->id,T_THE_CHANNEL,$bot->replyKeyboard([[B_ADD],[B_BACK]]));
+				} elseif($message->text==B_THE_USER) {
+					$db->update('users')->set(['action'=>11])->where('id='.$from->id)->exec();
+					$bot->sendMessage($from->id,T_THE_USER,$bot->replyKeyboard([[B_COLLECT],[B_BACK]]));
+				} else {
+					$bot->sendMessage($from->id,T_THE,$bot->replyKeyboard([[B_THE_CHANNEL],[B_THE_USER],[B_BACK]]));
+				}
+			} elseif($action[0]==10) {
+				if($message->text==B_BACK) {
+					$db->update('users')->set(['action'=>9])->where('id='.$from->id)->exec();
+					$bot->sendMessage($from->id,T_THE,$bot->replyKeyboard([[B_THE_CHANNEL],[B_THE_USER],[B_BACK]]));
+				} elseif($message->text==B_ADD) {
+					$temp=$bot->method('getChatMember',['chat_id'=>CHANNEL,'user_id'=>$from->id]);
+					if($temp->ok and $temp->result->status=='member') {
+						$db->update('users')->set(['action'=>1])->where('id='.$from->id)->exec();
+						$bot->sendMessage($from->id,T_1,$bot->replyKeyboard([[B_BACK]]));
+					} else {
+						$bot->sendMessage($from->id,T_1E_1);
+					}
+				} else {
+					$bot->sendMessage($from->id,T_THE_CHANNEL,$bot->replyKeyboard([[B_ADD],[B_BACK]]));
+				}
+			} elseif($action[0]==11) {
+				if($message->text==B_BACK) {
+					$db->update('users')->set(['action'=>9])->where('id='.$from->id)->exec();
+					$bot->sendMessage($from->id,T_THE,$bot->replyKeyboard([[B_THE_CHANNEL],[B_THE_USER],[B_BACK]]));
+				} elseif($message->text==B_COLLECT) {
+					$db->update('users')->set(['action'=>12])->where('id='.$from->id)->exec();
+					$bot->sendMessage($from->id,"Ochko toplash:",$bot->replyKeyboard([[B_INVITE],[B_LOTTERY,B_LUCK],[B_BACK]]));
+				} else {
+					$bot->sendMessage($from->id,T_THE_USER,$bot->replyKeyboard([[B_COLLECT],[B_BACK]]));
+				}
+			} elseif($action[0]==12) {
+				if($message->text==B_BACK) {
+					$db->update('users')->set(['action'=>11])->where('id='.$from->id)->exec();
+					$bot->sendMessage($from->id,T_THE_USER,$bot->replyKeyboard([[B_COLLECT],[B_BACK]]));
+				} elseif($message->text==B_INVITE) {
+					$bot->sendMessage($from->id,"👤bu botga a'zo bo'lmagan Do'stlaringizni taklif qiling hamda qimmatli 20ochkoga ega bo'ling
+
+Do'starni taklif qilish uchun silka",$bot->replyKeyboard([[B_INVITE],[B_LOTTERY,B_LUCK],[B_BACK]]));
+				} elseif($message->text==B_LOTTERY) {
+					$bot->sendMessage($from->id,T_LOTTERY,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Qatnashish','6')]]));
+				} elseif($message->text==B_LUCK) {
+					$bot->sendMessage($from->id,T_LUCK,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Omad','5')]]));
+				} else {
+					$bot->sendMessage($from->id,T_THE_USER,$bot->replyKeyboard([[B_COLLECT],[B_BACK]]));
+				}
+			}
+
+
+
+			elseif($action[0]==2) {
+				if($message->text==B_BACK) {
+					$db->update('users')->set(['action'=>0])->where('id='.$from->id)->exec();
+					$bot->sendMessage($from->id,T_0,$bot->replyKeyboard($MAIN_KEYBOARD));
+				} else {
+					foreach ($CATEGORYS as $key => $value) if($message->text==$value) {$value=true;break;}
+					if($value===true) {
+							$temp=$db->query('select * from channels where category='.$key.' and status=2 order by id desc')->fetch();
+							if($temp->valid()) {
+								$temp=$temp->current();
+								$bot->sendMessage($from->id,CHANNEL_POST($temp),$bot->inlineKeyboard([[['text'=>'Like','callback_data'=>'0:'.$temp->id],['text'=>'Keyingisi','callback_data'=>'1:'.$key.':'.$temp->id]]]));
+							} else {
+								$bot->sendMessage($from->id,'Afsuski hozircha bu yo\'nalishda kanal yo\'q');
+							}
+					} else {
+						$bot->sendMessage($from->id,'Tanlang!');
+					}
+				}
+			} 
+
+
+
+
+
+
+						$user->valid();
+			$temp='Xabar jo\'natildi:';
+			$i=0;
+			foreach ($db->select()->from('channels')->where('status=1')->fetch() as $value) {
+				$db->update('channels')->set(['status'=>4])->where('id='.$value->id)->exec();
+				try {
+					$bot->sendMessage($value->added,"Endi <b>➕Kanal qo'shish</b> uchun 300 ochko to'plashingiz kerak bo'ladi\n\n<i>⚠️Kanali chiqmayotganlardan ochko to'plab qaytadan urinib ko'rishingizni so'raymiz</i>\n\n🌀 @CatalogiyaBot\n🔹 @Catalogiya");
+					$temp.="\n".'<a href="tg://user?id='.$value->added.'">Foydalanuvchi</a> '.$value->username;
+				} catch(Exception $e) {
+					$temp.="\n".'<a href="tg://user?id='.$value->added.'">Foydalanuvchi</a> '.$value->username.' [Blocked]';
+				}
+				//usleep(200000);
+				$i++;
+				if($i==10) break;
+			}
+			$bot->sendMessage(ADMINS_GROUP,$temp);
+
+
+						$temp=$db->select()->from('likes')->where('user='.$from->id.' AND channel='.$db->escape($data[1]))->fetch();
+			if($temp->valid()) {
+				$bot->answerCallbackQuery($callback->id,['text'=>T_LIKE_E],true,300);
+			} else {
+				$db->insert()->into('likes')->set(['user'=>$from->id,'channel'=>$data[1]])->exec();
+				$db->query('update channels set likes=likes+1 where id='.$db->escape($data[1]))->exec();
+				$bot->answerCallbackQuery($callback->id,['text'=>T_LIKE],false,300);
+				if($message->chat->type=='channel') {
+					$channel=$db->select('likes')->from('channels')->where('id='.$db->escape($data[1]))->fetch();
+					if(!$channel->valid()) throw new Exception("Like boshda xatolik");
+					$channel=$channel->current();
+					$likes=isset($data[2])?$data[2]:0;
+					//$temp=$db->query('select count(*) as c from likes where channel='.$db->escape($data[1]))->fetch();
+					//if($temp->valid()) $temp=$temp->current()->c;
+					else $temp=0;
+					$channel=$db->select()->from('channels')->where('id='.$db->escape($data[1]))->fetch();
+					if($channel->valid()) {
+						$channel=$channel->current();
+						$bot->editMessageReplyMarkup(CHANNEL,$message->message_id,[[$bot->inlineKeyboardButton(B_LIKE.' ('.$temp.')','0:'.$data[1])],[['text'=>'A\'zo bo\'lish','url'=>'https://telegram.me/'.substr($channel->username,1)]]]);
+					}
+				}
+			}
+
+
+
+								$temp=$db->query('select count(*) as c from likes where channel='.$db->escape($data[1]))->fetch();
+					if($temp->valid()) $temp=$temp->current()->c;
+					else $temp=0;
+					$channel=$db->select()->from('channels')->where('id='.$db->escape($data[1]))->fetch();
+					if($channel->valid()) {
+						$channel=$channel->current();
+						$bot->editMessageReplyMarkup(CHANNEL,$message->message_id,[[$bot->inlineKeyboardButton(B_LIKE.' ('.$temp.')','0:'.$data[1])],[['text'=>'A\'zo bo\'lish','url'=>'https://telegram.me/'.substr($channel->username,1)]]]);
+					}
+
+
+								$temp1=$db->query('select count(likes.user) as c,channels.username as ch from likes inner join channels on channels.id=likes.channel group by likes.channel order by c desc limit 50')->fetch();
+
+
+
+
+			$user->valid();
+			$temp1=$db->query('select count(likes.user) as c,channels.id as ch from likes inner join channels on channels.id=likes.channel group by likes.channel')->fetch();
+			//$i=0;
+			foreach ($temp1 as $value) {
+				//$bot->sendMessage(ADMINS_GROUP,Telegrambot::HTML(dump($value)));
+				$db->query('update channels set likes='.$db->escape($value->c).' where id='.$db->escape($value->ch))->exec();
+			}
+			$bot->sendMessage(ADMINS_GROUP,'Bajarildi');
+
+			$arr=[
+'@HASHTAGUZ'=>223,
+'@STATUSLI'=>174,
+'@xacknet'=>82,
+'@tg_hashtag'=>76,
+'@UzCracker'=>70,
+'@Kulgu'=>68,
+'@Buyuklik_sari_qadam'=>58,
+'@Hackerlar'=>56,
+'@michael_jackson_pop'=>55,
+'@mancunian_uz'=>53
+			];
+			foreach ($arr as $key => $value) {
+				$db->query('update channels set likes=likes-'.$value.' where username='.$db->escape($key))->exec();
+			}
+
+
+
+
+
+					set_time_limit(0);
+					$a=0; $b=0;
+					$bot->sendMessage($from->id,'Jo\'natish boshlandi');
+					foreach ($db->select()->from('users')->fetch() as $value) if($value->action=='0') {
+						try {
+							$bot->sendMessage($value->id,$message->text);
+							$a++;
+						} catch(Exception $e) {
+							$b++;
+						}
+					}
+					$bot->sendMessage($from->id,$a.' ta odamga jo\'natildi,'.$b.' ta odamga jo\'natilmadi');
+
+
+
+					ignore_user_abort(true);
+header("Content-Length: 0");
+header("Connection: Close");
+flush();
+session_write_close();
+
+					ignore_user_abort(true);
+					header("Content-Length: 0", true);
+					header("Connection: Close", true);
+					flush();
+					ob_end_flush();
+
+
+										set_time_limit(0);
+					$a=0; $b=0;
+					//$bot->sendMessage($from->id,'Jo\'natish boshlandi',$bot->replyKeyboard($MAIN_KEYBOARD));
+					$db->update('users')->set(['action'=>0])->where('id='.$from->id)->exec();
+
+					
+					header("Connection: close\r\n");
+					header("Content-Encoding: none\r\n");
+					ignore_user_abort(true); // optional
+					ob_start();
+					echo json_encode(['method'=>'sendMessage','chat_id'=>$from->id,'text'=>'Jo\'natish boshlandi']);
+					$size = ob_get_length();
+					header("Content-Length: $size");
+					ob_end_flush();     // Strange behaviour, will not work
+					flush();            // Unless both are called !
+					ob_end_clean();
+					session_write_close();
+					sleep(5);
+
+					$i=0;
+					while(true) {
+						$i++;
+						if($i>10) break;
+						$bot->sendMessage($from->id,connection_status());
+						sleep(10);
+					}
+					// foreach ($db->select()->from('users')->fetch() as $value) if($value->action=='0') {
+					// 	try {
+					// 		$bot->sendMessage($value->id,$message->text);
+					// 		$a++;
+					// 	} catch(Exception $e) {
+					// 		$b++;
+					// 	}
+					// }
+					//$bot->sendMessage($from->id,$a.' ta odamga jo\'natildi,'.$b.' ta odamga jo\'natilmadi');
