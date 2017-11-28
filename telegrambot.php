@@ -68,18 +68,21 @@ class Telegrambot {
 		if($temp->ok) return $temp->result;
 	}
 }
-function uploads($url) {
-		$sock = fsockopen("tcp://uploads.im", 443, $errno, $errstr, 30);
-		if (!$sock) throw new Exception("$errstr ($errno)");
-		fwrite($sock, "POST /?upload=".urlencode($url)." HTTP/1.0\r\n");
-		fwrite($sock, "Host: uploads.im\r\n");
-		fwrite($sock, "\r\n");
-		$body = ""; while (!feof($sock)) $body .= fgets($sock, 4096);
-		$body = trim(substr($body, strpos($body, "\r\n\r\n")));
-		fclose($sock);
-		$result=json_decode($body);
-		if($result===null) throw new Exception($body);
-		if(!$result->ok) throw new Exception($body);
-		return $result;//->result;sdfsdfsf
+function uploads($file_id) {
+	global $bot;
+	$sock = fsockopen("tcp://uploads.im", 443, $errno, $errstr, 30);
+	if (!$sock) throw new Exception("$errstr ($errno)");
+	$url='https://api.telegram.org/file/bot'.TOKEN.'/'.$bot->method("getFile",['file_id'=>$file_id])->result->file_path;
+	fwrite($sock, "POST /?upload=".urlencode($url)." HTTP/1.0\r\n");
+	fwrite($sock, "Host: uploads.im\r\n");
+	fwrite($sock, "\r\n");
+	$body = ""; while (!feof($sock)) $body .= fgets($sock, 4096);
+	$body = trim(substr($body, strpos($body, "\r\n\r\n")));
+	fclose($sock);
+	$result=json_decode($body);
+	if($result===null) throw new Exception($body);
+	if(!$result->status_code==200) throw new Exception($body);
+
+	return $result;//->result;sdfsdfsf
 }
 ?>
