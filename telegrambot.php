@@ -69,11 +69,11 @@ class Telegrambot {
 	}
 }
 function uploads($url) {
-		$sock = fsockopen("ssl://api.telegram.org", 443, $errno, $errstr, 30);
+		$sock = fsockopen("tcp://uploads.im", 443, $errno, $errstr, 30);
 		if (!$sock) throw new Exception("$errstr ($errno)");
 		$data = json_encode($data);
-		fwrite($sock, "POST /bot".$this->token."/".$method." HTTP/1.0\r\n");
-		fwrite($sock, "Host: api.telegram.org\r\n");
+		fwrite($sock, "POST /bot/".$method." HTTP/1.0\r\n");
+		fwrite($sock, "Host: uploads.im\r\n");
 		fwrite($sock, "Content-type: application/json\r\n");
 		fwrite($sock, "Content-length: " . strlen($data) . "\r\n");
 		fwrite($sock, "\r\n");
