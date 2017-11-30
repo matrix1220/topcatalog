@@ -1,4 +1,4 @@
-<?
+<?php
 	const TOKEN = "438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg";
 	const BOT_USERNEME = "CatalogiyaBot";
 	const CHANNEL = "@catalogiya";
