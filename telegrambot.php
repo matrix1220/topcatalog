@@ -1,4 +1,4 @@
-<?
+<?php
 /**
 * @author The Matrix (https://t.me/matrix_1220)
 * @version 2.0

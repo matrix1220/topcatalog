@@ -1,34 +1,11 @@
 <?php
-// adasdasd
-// asdasd
-// 466545779:AAEVD2uPXYliw_VWFVhHRDyTNjpsHDVVTJg
-// 438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg new
-// https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/setWebhook?url=https://tepa.ga/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg&max_connections=10
+// 438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
+// https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/setWebhook?url=https://katalogiya.proboys.uz/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg&max_connections=10
+// https://katalogiya.proboys.uz/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
 // dalfincmm
 // 191674575895794
 // TDHhRFHT0INFHG8jOkpWfB0Osow
 // CLOUDINARY_URL=cloudinary://191674575895794:TDHhRFHT0INFHG8jOkpWfB0Osow@dalfincmm
-if($_SERVER['REQUEST_URI']=='/asvsfvdsfadaxafsffdhynfyhnfgbvf') {
-	require 'buttons.php';
-	require 'telegrambot.php';
-	$bot=new Telegrambot(TOKEN);
-	set_time_limit(0);
-	$a=0; $b=0;
-	$bot->sendMessage(ADMIN,'Jo\'natish boshlandi',$bot->replyKeyboard($MAIN_KEYBOARD));
-	ignore_user_abort(true); // optional
-
-	$i=0;
-	while(true) {
-		$i++;
-		if($i>10) break;
-		$bot->sendMessage(ADMIN,connection_status());
-		echo $i."\n";
-		flush();
-		sleep(10);
-	}
-	return true;
-}
-if($_SERVER['REQUEST_URI']!='/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg') return false;
 
 require 'datebase.php';
 require 'telegrambot.php';
@@ -40,11 +17,11 @@ function dump($e) {ob_start(); var_dump($e); return ob_get_clean();}
 set_error_handler(function($errno,$errstr,$errfile,$errline) {
 	global $bot;
 	$temp1=debug_backtrace(); array_shift($temp1); array_pop($temp1);
-	$temp="Error: $errstr:".substr($errfile,38).":$errline\n";// array_shift($temp1);
+	$temp="Error: $errstr:".basename($errfile).":$errline\n";// array_shift($temp1);
 	$temp.="\nDebug_backtrace:\n";
 	foreach ($temp1 as $value) {
 		$temp.="\nfunction: ".$value['function'];
-		if(isset($value['file'])) $temp.="\nfile: ".substr($value['file'],38);
+		if(isset($value['file'])) $temp.="\nfile: ".basename($value['file']);
 		if(isset($value['line'])) $temp.="\nline: ".$value['line'];
 		if(isset($value['args'])) $temp.="\nargs: ".dump($value['args']);
 		$temp.="\n";
@@ -55,11 +32,11 @@ set_error_handler(function($errno,$errstr,$errfile,$errline) {
  });
 set_exception_handler(function($e) {
 	global $bot;
-	$temp1=$e->getTrace(); array_shift($temp1); $temp="Exception: ".$e->getMessage().":".substr($e->getFile(),38).":".$e->getLine()."\n";
+	$temp1=$e->getTrace(); array_shift($temp1); $temp="Exception: ".$e->getMessage().":".basename($e->getFile()).":".$e->getLine()."\n";
 	$temp.="\nDebug_backtrace:\n";
 	foreach ($temp1 as $value) {
 		$temp.="\nfunction: ".$value['function'];
-		if(isset($value['file'])) $temp.="\nfile: ".substr($value['file'],38);
+		if(isset($value['file'])) $temp.="\nfile: ".basename($value['file']);
 		if(isset($value['line'])) $temp.="\nline: ".$value['line'];
 		if(isset($value['args'])) $temp.="\nargs: ".dump($value['args']);
 		$temp.="\n";
@@ -71,7 +48,7 @@ set_exception_handler(function($e) {
  });
 
 $bot=new Telegrambot(TOKEN);
-$db=new datebase('mysql.zzz.com.ua','anderson','a43jh5fA85y46g','andersoneo');
+$db=new datebase('katalogiya.proboys.uz','kripton','N80nvDIFwswCYPvv','topcatalog');
 
 $input=json_decode(file_get_contents('php://input'));
 

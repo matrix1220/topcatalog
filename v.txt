@@ -230,3 +230,51 @@ session_write_close();
 					// 	}
 					// }
 					//$bot->sendMessage($from->id,$a.' ta odamga jo\'natildi,'.$b.' ta odamga jo\'natilmadi');
+
+
+
+
+					if($_SERVER['REQUEST_URI']=='/asvsfvdsfadaxafsffdhynfyhnfgbvf') {
+	require 'buttons.php';
+	require 'telegrambot.php';
+	$bot=new Telegrambot(TOKEN);
+	set_time_limit(0);
+	$a=0; $b=0;
+	$bot->sendMessage(ADMIN,'Jo\'natish boshlandi',$bot->replyKeyboard($MAIN_KEYBOARD));
+	ignore_user_abort(true); // optional
+
+	$i=0;
+	while(true) {
+		$i++;
+		if($i>10) break;
+		$bot->sendMessage(ADMIN,connection_status());
+		echo $i."\n";
+		flush();
+		sleep(10);
+	}
+	return true;
+}
+if($_SERVER['REQUEST_URI']!='/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg') return false;
+
+
+
+foreach (scandir('.') as $file) if(substr($file,0,7)=='access-') if(is_file($file)) if((include $file)===true) exit;
+
+$file=substr($_SERVER['REQUEST_URI'],1);
+$temp=strpos($file,'?');
+if($temp===false) {$temp=strlen($file);}
+$file=substr($file,0,$temp);
+if(is_file('public/'.$file)) include 'public/'.$file;
+else echo 'Axmoq bo\'lsang olam seniki';
+
+
+<FilesMatch "index.php">
+Order Deny,Allow
+Allow from all
+</FilesMatch>
+
+<FilesMatch "AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg">
+Order Deny,Allow
+Allow from all
+RewriteRule ^AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg$ access-bot.php
+</FilesMatch>
