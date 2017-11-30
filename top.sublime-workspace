@@ -1,0 +1,1376 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"AD",
+				"ADMINS_GROUP"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"te",
+				"temp"
+			],
+			[
+				"ja",
+				"jakpot"
+			],
+			[
+				"chat",
+				"chat_id"
+			],
+			[
+				"js",
+				"json_encode"
+			],
+			[
+				"ob_end",
+				"ob_end_flush"
+			],
+			[
+				"cha",
+				"channel"
+			],
+			[
+				"de",
+				"debug_backtrace"
+			],
+			[
+				"bo",
+				"bot"
+			],
+			[
+				"set_",
+				"set_time_limit"
+			],
+			[
+				"us",
+				"user"
+			],
+			[
+				"ch",
+				"CHANNEL"
+			],
+			[
+				"me",
+				"message"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"fr",
+				"from"
+			],
+			[
+				"chan",
+				"channels"
+			],
+			[
+				"chann",
+				"channel"
+			],
+			[
+				"C",
+				"CHANNEL"
+			],
+			[
+				"F",
+				"Foydalanuvchi"
+			],
+			[
+				"j",
+				"json_encode"
+			],
+			[
+				"b",
+				"bot"
+			],
+			[
+				"t",
+				"temp"
+			],
+			[
+				"uploa",
+				"uploads"
+			],
+			[
+				"adm",
+				"administratorga"
+			],
+			[
+				"array_p",
+				"array_pop"
+			],
+			[
+				"ball-",
+				"ball-ADD_BALL"
+			],
+			[
+				"getCh",
+				"getChatMember"
+			],
+			[
+				"inl",
+				"inlineKeyboardButton"
+			],
+			[
+				"mes",
+				"message"
+			],
+			[
+				"CH",
+				"CHANNEL"
+			],
+			[
+				"fo",
+				"foreach\tforeach …"
+			],
+			[
+				"use",
+				"username"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"ke",
+				"key"
+			],
+			[
+				"key",
+				"keys"
+			],
+			[
+				"B_",
+				"B_CONTACT"
+			],
+			[
+				"strto",
+				"strtolower"
+			],
+			[
+				"en",
+				"entiti"
+			],
+			[
+				"inli",
+				"inlineKeyboard"
+			],
+			[
+				"B_L",
+				"B_LIKE"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"pre",
+				"preg_match"
+			],
+			[
+				"han",
+				"handler"
+			],
+			[
+				"gl",
+				"globals\t$GLOBALS['…']"
+			],
+			[
+				"glo",
+				"global"
+			],
+			[
+				"inline",
+				"inlineKeyboard"
+			],
+			[
+				"fi",
+				"filters"
+			],
+			[
+				"func",
+				"function"
+			],
+			[
+				"g",
+				"globals\t$GLOBALS['…']"
+			],
+			[
+				"E",
+				"Exception"
+			],
+			[
+				"call",
+				"call_user_func"
+			],
+			[
+				"return",
+				"returnType"
+			],
+			[
+				"des",
+				"description"
+			],
+			[
+				"T_Th",
+				"T_THE_CHANNEL"
+			],
+			[
+				"B_THE",
+				"B_THE_CHANNEL"
+			],
+			[
+				"T_LOT",
+				"T_LOTTERY_1"
+			],
+			[
+				"c",
+				"currentball"
+			],
+			[
+				"ex",
+				"exception"
+			],
+			[
+				"is_nu",
+				"is_numeric"
+			],
+			[
+				"follo",
+				"follows"
+			],
+			[
+				"fol",
+				"followers"
+			],
+			[
+				"class",
+				"class_exists"
+			],
+			[
+				"hand",
+				"Handle"
+			],
+			[
+				"str_rep",
+				"str_replace"
+			],
+			[
+				"cons",
+				"const"
+			],
+			[
+				"ba",
+				"ball"
+			],
+			[
+				"B_a",
+				"B_ACCOUNT"
+			],
+			[
+				"CHA",
+				"CHANNEL_POST"
+			],
+			[
+				"da",
+				"data"
+			],
+			[
+				"con",
+				"const"
+			],
+			[
+				"an",
+				"answerCallbackQuery"
+			],
+			[
+				"ca",
+				"cache_time"
+			],
+			[
+				"sho",
+				"show_alert"
+			],
+			[
+				"CA",
+				"CATEGORY"
+			],
+			[
+				"BN_",
+				"BN_BACK"
+			],
+			[
+				"BN",
+				"BN_BACK"
+			],
+			[
+				"h",
+				"headers"
+			],
+			[
+				"BN_C",
+				"BN_CONTACT"
+			],
+			[
+				"wh",
+				"where"
+			],
+			[
+				"u",
+				"user"
+			],
+			[
+				"compl",
+				"complete_2FA_login"
+			],
+			[
+				"ma",
+				"MadelineProto"
+			],
+			[
+				"ur",
+				"url"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"senm",
+				"sendMessage"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"sen",
+				"sendMessage"
+			],
+			[
+				"qu",
+				"query_parts"
+			],
+			[
+				"http_b",
+				"http_build_query"
+			],
+			[
+				"op",
+				"option\tTag"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"foll",
+				"follows"
+			],
+			[
+				"up",
+				"updates"
+			],
+			[
+				"else",
+				"elseif\telseif …"
+			],
+			[
+				"update",
+				"update_type"
+			],
+			[
+				"wa",
+				"wapi_ok"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"ha",
+				"handler"
+			],
+			[
+				"caa",
+				"call_user_method_array"
+			],
+			[
+				"ty",
+				"type"
+			],
+			[
+				"stat",
+				"static"
+			],
+			[
+				"T",
+				"TOKEN"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"date",
+				"datebase"
+			],
+			[
+				"co",
+				"constructElse"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"w",
+				"where"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"url",
+				"urlencode"
+			],
+			[
+				"sum",
+				"sums"
+			],
+			[
+				"tr",
+				"TRANSPORT"
+			],
+			[
+				"o",
+				"OLD"
+			],
+			[
+				"fri",
+				"FRIENDPLACE"
+			],
+			[
+				"preg",
+				"preg_match"
+			],
+			[
+				"esc",
+				"escape"
+			],
+			[
+				"th",
+				"this"
+			],
+			[
+				"jsn",
+				"json_encode"
+			],
+			[
+				"ar",
+				"array_keys"
+			],
+			[
+				"query_",
+				"query_parts"
+			],
+			[
+				"mys",
+				"mysql_error"
+			],
+			[
+				"pr",
+				"private"
+			],
+			[
+				"blo",
+				"block"
+			],
+			[
+				"list-g",
+				"list-group-item"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"bl",
+				"block_end"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "access-bot.php",
+			"settings":
+			{
+				"buffer_size": 47619,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "buttons.php",
+			"settings":
+			{
+				"buffer_size": 10556,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "telegrambot.php",
+			"settings":
+			{
+				"buffer_size": 3507,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "‘¨áâ¥¬¥ ­¥ ã¤ ¥âáï ­ ©â¨ ãª § ­­ë© ¯ãâì.\r\n",
+			"settings":
+			{
+				"buffer_size": 42,
+				"line_ending": "Windows",
+				"name": "Git Log Graph",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "readme.txt",
+			"settings":
+			{
+				"buffer_size": 1183,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/access-server.php",
+			"settings":
+			{
+				"buffer_size": 4755,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Program Files (x86)/OpenServer/domains/localhost/exception.php",
+			"settings":
+			{
+				"buffer_size": 135,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 413,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "v.txt",
+			"settings":
+			{
+				"buffer_size": 9603,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Program Files (x86)/3proxy-0.9-devel-170512222912/bin/3proxy.cfg",
+			"settings":
+			{
+				"buffer_size": 60,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Syntax Check"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"ph",
+				"Set Syntax: PHP"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"3",
+				"Set Syntax: Tool 3D"
+			],
+			[
+				"git: ",
+				"Git: Commit history"
+			],
+			[
+				"gi",
+				"Git: Init"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 432.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Muhiddin/AppData/Roaming/Sublime Text 3/Packages/Git/Git.sublime-settings",
+		"/C/Users/Muhiddin/AppData/Roaming/Sublime Text 3/Packages/User/Git.sublime-settings",
+		"/G/Users/Muhiddin/Projects/topcatalog/buttons.php",
+		"/G/Users/Muhiddin/Projects/topcatalog/access-bot.php",
+		"/C/Users/Muhiddin/Downloads/Telegram Desktop/katalogiya.proboys.uz.conf",
+		"/D/Program Files (x86)/OpenServer/domains/matrix1220.uzproboys.ga/index.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/access_log",
+		"/G/Users/Muhiddin/Projects/uzproboys/index.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/index.php",
+		"/C/Users/Muhiddin/Downloads/Telegram Desktop/sample.php",
+		"/C/Users/Muhiddin/Documents/csharp/vshbeta/vshbeta/bin/Release/Newtonsoft.Json.xml",
+		"/C/Program Files (x86)/MultiProxy/readme.txt",
+		"/C/Program Files (x86)/MultiProxy/proxy_all.txt",
+		"/D/Program Files (x86)/3proxy-0.9-devel-170512222912/bin/3proxy.cfg",
+		"/G/Setup/OS/Windows XP Pro sp3 VL (MSDN)/Keys.txt",
+		"/F/Новый текстовый документ.txt",
+		"/G/Users/Muhiddin/Projects/topcatalog/readme.txt",
+		"/G/Users/Muhiddin/Projects/topcatalog/basic.php",
+		"/G/Users/Muhiddin/Projects/topcatalog/telegrambot.php",
+		"/G/Users/Muhiddin/Projects/topcatalog/v.txt",
+		"/G/Users/Muhiddin/Projects/topcatalog/settings.php",
+		"/C/Users/Muhiddin/AppData/Roaming/Sublime Text 3/Packages/User/test.sublime-build",
+		"/D/Downloads/Дискотека 2017 Dance Club Vol. 171 от NNNB/Tracklist.txt",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/telegrambot21.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/readme.txt",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/objects.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/index.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/access-bot.php",
+		"/G/Users/Muhiddin/Projects/topcatalog/datebase.php",
+		"/G/Users/Muhiddin/Temp/10.04.2017/Хоразм - Семинар 8-08-2012/seminar/public_html/php/myform.css",
+		"/G/Users/Muhiddin/Temp/10.04.2017/Хоразм - Семинар 8-08-2012/seminar/public_html/mysql_backup/insert.php",
+		"/C/Users/Muhiddin/Desktop/pwr.txt",
+		"/C/Users/Muhiddin/AppData/Local/Temp/_tc/access-bot.php",
+		"/G/Users/Muhiddin/Temp/t/buttons.php",
+		"/G/Users/Muhiddin/Temp/t/datebase.php",
+		"/G/Users/Muhiddin/Temp/t/access-bot.php",
+		"/G/Users/Muhiddin/Temp/t/telegrambot.php",
+		"/G/Users/Muhiddin/Temp/t/index.php",
+		"/G/Users/Muhiddin/Backup/htc desire 310 dual sim/htc.txt",
+		"/G/Users/Muhiddin/Projects/topcatalog/index.php",
+		"/G/Projects/Photoshop/GraphicRiver - Sketch Art Photoshop Action/Important ! Readme.txt",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/datebase.php",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/triangle.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/2.0/access-bot.php",
+		"/D/Program Files (x86)/OpenServer/domains/blue.uz/functions/13-function.php",
+		"/D/Downloads/Visual Web Ripper 3.0.18 Full - парсинг контента/crack/INFO.txt",
+		"/D/Downloads/Visual Web Ripper 3.0.18 Full - парсинг контента/ReleaseNotes.txt",
+		"/G/Users/Muhiddin/Projects/eshimmat/2.0/libs.php",
+		"/G/Users/Muhiddin/Projects/libs/datebase.php",
+		"/G/Users/Muhiddin/Projects/libs/telegrambot20.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/2.0/telegrambot.php",
+		"/G/Users/Muhiddin/Projects/libs/telegrambot10.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/1.0/libs.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/1.0/bot.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/2.0/datebase.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/libs.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/2.0/readme.txt",
+		"/G/Users/Muhiddin/Projects/eshimmat/2.0/access-words-api.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/2.0/access-sql.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/access-beta.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/access-bot.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/log1505118727.txt",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/telegrambot.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/telegrambot.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/access-sql.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/access-server.php",
+		"/D/Downloads/[ITVDN] C# Базовый - 2014/README.txt",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/Program Files (x86)/OpenServer/domains/shared.uz/asd.php",
+		"/C/Users/Muhiddin/AppData/Roaming/Axolot Games/Scrap Mechanic/User/User_76561198516967826/Blueprints/1f1f6874-95f4-4b9a-850c-da5f4a936432/description.json",
+		"/D/Programm temp/kk/description.json",
+		"/C/Users/Muhiddin/AppData/Local/Temp/Rar$DIa0.531/readme.txt",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/control/.htaccess",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/index.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/access-temp.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/.htaccess",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/control/index.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/handlers.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/filters.php",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/classA.php",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/rest.php",
+		"/C/Users/Muhiddin/Desktop/Новый текстовый документ.txt",
+		"/C/Users/Muhiddin/AppData/Local/Temp/_tc/english.uz/dor.php",
+		"/C/Users/Muhiddin/AppData/Local/Temp/_tc/english.uz/generate.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/.htaccess",
+		"/G/Users/Muhiddin/Projects/eshimmat/index.php",
+		"/D/Program Files (x86)/3proxy-0.9-devel-170512222912/cfg/sql/create.sql",
+		"/D/Downloads/3proxy-0.9-devel-170512222912/bin/3proxy.cfg",
+		"/F/readme.txt",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/server.php",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/test.php",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/tr069.php",
+		"/D/Downloads/AvtoTest.part1/пароли.txt",
+		"/D/Program Files (x86)/SP-Flash-Tool-v5.1532.00/usb_setting.xml",
+		"/D/Downloads/README.txt",
+		"/D/Downloads/Ruble_Hack_.txt",
+		"/D/Downloads/z.txt",
+		"/D/Downloads/host.txt",
+		"/C/Users/Muhiddin/AppData/Local/Temp/Rar$DIa0.718/Readme RUS.txt",
+		"/D/temp/Новый текстовый документ.txt",
+		"/C/Users/Muhiddin/Desktop/HUJJAT.txt",
+		"/C/Users/Muhiddin/Desktop/can (2).txt",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/classB.php",
+		"/G/Users/Muhiddin/Music/temp/11223/readme.txt",
+		"/G/Users/Muhiddin/Projects/eshimmat/access-myHisobot.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/3.0/libs.php",
+		"/D/Program Files (x86)/OpenServer/domains/blue.uz/index.php",
+		"/D/Downloads/100-4561_6640_9274.json",
+		"/G/Users/Muhiddin/Temp/myproject/telegram.txt",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/stream.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/cake/vendor/composer/composer/doc/fixtures/repo-composer-with-providers/p/bar/baz$923363b3c22e73abb2e3fd891c8156dd4d0821a97fd3e428bc910833e3e46dbe.json",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/acs.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/libs.php",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/eshim_words/configs.php",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/eshim_words/update_type.php",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/eshim_words/handler.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/.htaccess",
+		"/G/Users/Muhiddin/Projects/eshimmat/localfunc-defense.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/datebase.php",
+		"/D/Program Files (x86)/OpenServer/domains/localhost/eshim_words/handlers.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/server.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/v4.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/index2.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/old/v2.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/old/v1.php",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/old/v3.php",
+		"/G/Users/Muhiddin/Projects/eshimmat/log1505479964.txt",
+		"/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/log1504860337.txt"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"if",
+			"T_15_1",
+			"T_15E",
+			"T_15_2",
+			"15",
+			"7:3",
+			"if($db->select()->from('users')->where('id='.$from->id)->fetch()->current()->ball>=ADD_BALL) {\n\t\t\t\t\t\t\t$db->update('users')->set(['action'=>1])->where('id='.$from->id)->exec();\n\t\t\t\t\t\t\t$bot->sendMessage($from->id,T_1,$bot->replyKeyboard([[B_YES],[B_BACK]]));\n\t\t\t\t\t\t} else {",
+			"if($temp->ok and in_array($temp->result->status,['member','creator','administrator'])) {",
+			"\t\t\t\t\tif($temp->ok and in_array($temp->result->status,['member','creator','administrator'])) {\n\t\t\t\t\t\tif($db->select()->from('users')->where('id='.$from->id)->fetch()->current()->ball>=ADD_BALL) {\n\t\t\t\t\t\t\t$db->update('users')->set(['action'=>1])->where('id='.$from->id)->exec();\n\t\t\t\t\t\t\t$bot->sendMessage($from->id,T_1,$bot->replyKeyboard([[B_YES],[B_BACK]]));\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t$bot->sendMessage($from->id,T_1E_1,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_COLLECT,'7:4')]]));\n\t\t\t\t\t\t}\n\t\t\t\t\t} else {\n\t\t\t\t\t\t$bot->sendMessage($from->id,T_1E_2);\n\t\t\t\t\t}",
+			"@$bot->method",
+			"editMessageText",
+			">update('channels')->set(['a",
+			"_SERVER",
+			" ",
+			"$bot->method('sendPhoto',['chat_id'=>$from->id,\"photo\"=>\"AgADAgADgqgxGw8vOEhXxKrFgWqsYe8FMw4ABMasja7ONEthu3MAAgI\"]);",
+			"//$",
+			"$bot->method('sendPhoto',['chat_id'=>$from->id,\"photo\"=>\"AgADAgADgqgxGw8vOEhXxKrFgWqsYe8FMw4ABMasja7ONEthu3MAAgI\"]);",
+			"AgADAgADgqgxGw8vOEhXxKrFgWqsYe8FMw4ABJN_nPCNydhnuHMAAgI",
+			"@$bot->method",
+			"action",
+			"ADD_BALL",
+			"300",
+			"$db->update('users')->set(['action'=>0])->where('id='.$from->id)->exec();",
+			"EXTRA",
+			"\"",
+			"file",
+			"t.me",
+			"AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg",
+			"tg://user?i",
+			"Foydalanuvchi",
+			"method",
+			"$bot->method",
+			"method",
+			"T_1E_2",
+			"T_1E_3",
+			"thod('getChatMember',['chat_id'=>CHANNE",
+			"thod('getChatMember',['chat_id'=>CH",
+			"er',['chat_id'=>CHANNEL,'user_id'=>$fr",
+			"('getChatMember',['c",
+			"tChatMember',['chat_id'=>CHANNEL,'user_id'=>$from->id])",
+			"thod('getChatMember',['chat_id'=>CHA",
+			"in_array",
+			"$temp->current()",
+			"$temp=$bot->method('getChatMember',['chat_id'=>CHANNEL,'user_id'=>$from->id]);\n\t\t\t\t\tif($temp->ok and $temp->result->status!='left') {\n\t\t\t\t\t\tif($db->select()->from('users')->where('id='.$from->id)->fetch()->current()->ball>=ADD_BALL) {\n\t\t\t\t\t\t\t$db->update('users')->set(['action'=>1])->where('id='.$from->id)->exec();\n\t\t\t\t\t\t\t$bot->sendMessage($from->id,T_1,$bot->replyKeyboard([[B_YES],[B_BACK]]));\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t$bot->sendMessage($from->id,T_1E_1,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_COLLECT,'7:4')]]));\n\t\t\t\t\t\t}\n\t\t\t\t\t} else {\n\t\t\t\t\t\t$bot->sendMessage($from->id,T_1E_2);\n\t\t\t\t\t}",
+			"T_1E",
+			"htef",
+			"qabul qil",
+			"qabul qi",
+			"qabul qilin",
+			"Qabul qilin",
+			"data",
+			"yo'q",
+			"getChatMember",
+			"Ochko toplash",
+			"1->current()",
+			"editMessageText",
+			"count",
+			"channel",
+			"$from->id",
+			"dump",
+			"unt(*)",
+			"elect count",
+			"$temp->result",
+			"joinchat",
+			"//\n",
+			"getChat",
+			"$update",
+			">input",
+			"$handler->input=",
+			"throw",
+			"$name",
+			"'id'",
+			"[$",
+			"t[$",
+			"[$",
+			"t->{",
+			"self::$keys[$key]",
+			"$key",
+			">object",
+			"$update",
+			"left",
+			"left'",
+			"'member",
+			"member",
+			"getChatMember",
+			"f (",
+			"108268232",
+			"n(\"4\"",
+			"if($temp===false) throw new Exception(\"3\");",
+			"n(\"1\"",
+			"if($temp===false) throw new Exception(\"2\");\n",
+			"466545779:AAEVD2uPXYliw_VWFVhHRDyTNjpsHDVVTJg",
+			"=2",
+			"2",
+			"yiabot",
+			"input",
+			"->is_this",
+			"update",
+			"Update",
+			"update",
+			"input",
+			"$handler",
+			"$input,$value",
+			"filters",
+			"$this->filter",
+			"handle",
+			"Handle",
+			"handle",
+			"Handle",
+			"handle",
+			"$filter",
+			"self::$global[$id]",
+			"a",
+			"$message",
+			"\t// (new Handler(function($input){\n\t// \tglobal $db;\n\t// \tforeach($db->select()->from('words')->fetch() as $value) {\n\t// \t\tif(preg_match($value->key, $input)) {\n\t// \t\t\treturn $value->value;\n\t// \t\t}\n\t// \t}\n\t// \treturn false;\n\t// }))->addFilter(3,'text');",
+			"$GLOBALS['bot']->sendMessage(108268232,dump($input).\"\\n\".dump($value));",
+			"global $bot;\n\t$bot->sendMessage(108268232,dump($input).\"\\n\".dump($value));",
+			"global $bot;\n\t$bot->sendMessage(108268232,dump($input));",
+			"$exception",
+			"value1",
+			"_filters",
+			"data",
+			"'Keyingisi'",
+			"'Like'",
+			"Like",
+			"$key",
+			"key",
+			"$message->from"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "access-bot.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 47619,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20348,
+								20338
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7269.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "buttons.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "telegrambot.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3507,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3022,
+								3022
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1175.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 42,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_root_dir": "G:\\Users\\Muhiddin\\Projects\\topcatalog",
+							"syntax": "Packages/Git/syntax/Git Graph.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "readme.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								489,
+								489
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 455.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/G/Users/Muhiddin/Projects/uzproboys/apis/vsh/access-server.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4755,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1331,
+								1319
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/D/Program Files (x86)/OpenServer/domains/localhost/exception.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 135,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								68,
+								106
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "v.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9603,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8359,
+								8359
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1242.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/D/Program Files (x86)/3proxy-0.9-devel-170512222912/bin/3proxy.cfg",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 60,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								59,
+								59
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 109.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 118.0
+	},
+	"pinned_build_system": "Packages/User/test.sublime-build",
+	"project": "",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"G:\\Users\\Muhiddin\\Projects\\topcatalog\\access-bot.php"
+			],
+			[
+				"c",
+				"D:\\Program Files (x86)\\OpenServer\\domains\\blue.uz\\functions\\03-reload.php"
+			],
+			[
+				"fin",
+				"D:\\Program Files (x86)\\OpenServer\\domains\\blue.uz\\modules\\files\\index.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

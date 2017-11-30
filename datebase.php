@@ -1,4 +1,4 @@
-<?php
+<?
 class datebase {
 	private $conn;
 	private $query;
