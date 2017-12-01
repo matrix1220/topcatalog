@@ -123,7 +123,7 @@ Batafsil👇";
 	const T_CONTACT_1 = "Savollar bo'lsa yozib qoldiring\n\n<b>⚠️Faqat shu bot haqidagi savollarni yozib qoldiring‼️</b>";
 	const T_CONTACT_2 = "Tez fursatlarda javob berishga harakat qilamiz";
 	function T_WELCOM($name) {
-		return "Salom ".$name."\nEng sara kanallar Katalogi\n🌀 ".CHANNEL." kanalining robotiga Xush kelibsiz\n\nBotdan to'liq foydalanish uchun ".CHANNEL." kanaliga obuna bo'ling";
+		return Telegrambot::HTML("Salom ".$name."\nEng sara kanallar Katalogi\n🌀 ".CHANNEL." kanalining robotiga Xush kelibsiz\n\nBotdan to'liq foydalanish uchun ".CHANNEL." kanaliga obuna bo'ling");
 	}
 	const T_ABOUT = "Hurmatli obunachilar bu bot         🌀 @YIAMEGA buyurtmasiga binoan 🔹 @UzProBoys jamoasi tomonidan yasalgan.
 Bu botni yasashda
@@ -179,13 +179,13 @@ O'yinda qatnashish uchun siz 1dan 30 gacha bo'lgan ixtiyoriy son tanlaysiz. Agar
 🔸O'yinda qatnashish 50ochko";
 	const T_15_1 = "1dan 30 gacha bo'lgan son tanlang";
 	function T_15_2() {
-		$temp=date("G")+3; if($temp>=24) $temp-=24;
+		$temp=date("G");
 		if($temp<9) {$temp=9;} elseif($temp<12) {$temp=12;} elseif($temp<15) {$temp=15;} elseif($temp<18) {$temp=18;}
 		elseif($temp<21) {$temp=21;} elseif($temp<24) {$temp=0;}
 		return "Son tanlandi. Natijalar ".$temp.":00 da e'lon qilinadi";
 	}
 	function T_15E() {
-		$temp=date("G")+3; if($temp>=24) $temp-=24;
+		$temp=date("G");
 		if($temp<9) {$temp=9;} elseif($temp<12) {$temp=12;} elseif($temp<15) {$temp=15;} elseif($temp<18) {$temp=18;}
 		elseif($temp<21) {$temp=21;} elseif($temp<24) {$temp=0;}
 		return "Siz sonni tanlab bo'lgansiz. Natijalar ".$temp.":00 da e'lon qilinadi";

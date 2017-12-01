@@ -1,7 +1,7 @@
 <?php
 // 438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
-// https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/setWebhook?url=https://katalogiya.proboys.uz/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg&max_connections=10
-// https://katalogiya.proboys.uz/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
+// https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/setWebhook?url=https://katalogiya.proboys.uz/topcatalog/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg&max_connections=10
+// https://katalogiya.proboys.uz/topcatalog/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
 // dalfincmm
 // 191674575895794
 // TDHhRFHT0INFHG8jOkpWfB0Osow
@@ -12,6 +12,7 @@ require 'telegrambot.php';
 require 'buttons.php';
 
 header('Content-Type: application/json');
+date_default_timezone_set('Asia/Tashkent');
 //"Tizimda nosozlik! Boshqattan urinib ko'ring."
 function dump($e) {ob_start(); var_dump($e); return ob_get_clean();}
 set_error_handler(function($errno,$errstr,$errfile,$errline) {
@@ -26,7 +27,6 @@ set_error_handler(function($errno,$errstr,$errfile,$errline) {
 		if(isset($value['args'])) $temp.="\nargs: ".dump($value['args']);
 		$temp.="\n";
 	}
- 	//$db->insert()->into('log')->set(['type'=>'0','str'=>$errstr,'file'=>$errfile,'line'=>$errline,'input'=>file_get_contents('php://input')])->exec();
  	$bot->sendMessage(ADMIN,Telegrambot::HTML($temp));
  	return true;
  });
@@ -41,14 +41,11 @@ set_exception_handler(function($e) {
 		if(isset($value['args'])) $temp.="\nargs: ".dump($value['args']);
 		$temp.="\n";
 	}
-	// $temp1=debug_backtrace();$temp='';// array_shift($temp1);
-	// foreach ($temp1 as $value) $temp.="\n".$value['function'].':'.substr($value['file'],38).':'.$value['line'].':'.print_r($value['args'],true);
-	// $db->insert()->into('log')->set(['type'=>'1','str'=>$e->getMessage().$temp,'file'=>$e->getFile(),'line'=>$e->getLine(),'input'=>file_get_contents('php://input')])->exec();
 	$bot->sendMessage(ADMIN,Telegrambot::HTML($temp));
  });
 
 $bot=new Telegrambot(TOKEN);
-$db=new datebase('katalogiya.proboys.uz','kripton','N80nvDIFwswCYPvv','topcatalog');
+$db=new datebase('localhost','kripton','N80nvDIFwswCYPvv','topcatalog');
 
 $input=json_decode(file_get_contents('php://input'));
 
@@ -115,13 +112,17 @@ if(isset($input->message)) {
 			throw new Exception("Error Processing Request");
 		} elseif($message->text=="/test_time") {
 			$user->valid();
+			header("Content-Length: 0", true);
+			header("Connection: close",true);
+			flush();
 			set_time_limit(0);
+			ignore_user_abort(true);
 			$i=0;
 			while (true) {
+				$bot->sendMessage(ADMINS_GROUP,($i*20).'-sekund, connection_status:'.connection_status());
+				if($i==20) break;
 				$i++;
-				$bot->sendMessage(ADMINS_GROUP,($i*5).' sekund');
-				if($i==10) break;
-				sleep(5);
+				sleep(20);
 			}
 		} elseif($message->text=="/current_time") {
 			$bot->sendMessage(ADMINS_GROUP,date("H:i:s"));
