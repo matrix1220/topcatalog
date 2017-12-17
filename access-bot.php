@@ -1,17 +1,19 @@
 <?php
 // 438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
 // https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/setWebhook?url=https://katalogiya.proboys.uz/topcatalog/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg&max_connections=10
+// https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/deletewebhook
+// https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/getUpdates?offset=-1
 // https://katalogiya.proboys.uz/topcatalog/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
 // dalfincmm
 // 191674575895794
 // TDHhRFHT0INFHG8jOkpWfB0Osow
 // CLOUDINARY_URL=cloudinary://191674575895794:TDHhRFHT0INFHG8jOkpWfB0Osow@dalfincmm
-
+//file_get_contents("http://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/sendMessage?chat_id=108268232&text=asd");
 require 'datebase.php';
 require 'telegrambot.php';
 require 'buttons.php';
 
-header('Content-Type: application/json');
+//header('Content-Type: application/json');
 date_default_timezone_set('Asia/Tashkent');
 //"Tizimda nosozlik! Boshqattan urinib ko'ring."
 function dump($e) {ob_start(); var_dump($e); return ob_get_clean();}
@@ -847,5 +849,5 @@ Do'stlarni taklif qilish uchun havola(silka)</i>\n👉 t.me/".BOT_USERNEME."?sta
 		}
 	}
 }
-return true;
+echo '{"ok":true}';
 //test for git
