@@ -14,7 +14,8 @@ class datebase {
 		];
 	}
 	function __construct($host,$user,$pass,$db) {
-		$this->conn=new mysqli($host,$user,$pass,$db);
+		$this->conn=@new mysqli($host,$user,$pass,$db);
+		if(!$this->conn) throw new Exception("Mysqlda xatolik: ".$this->conn->error);
 		$this->clear_parts();
 	}
 	function __destruct() {
@@ -48,7 +49,7 @@ class datebase {
 	}
 	function exec() {
 		$this->build_query();
-		$temp=$this->conn->query($this->query);
+		$temp=@$this->conn->query($this->query);
 		if(!$temp) throw new Exception('Mysqlda xatolik: '.$this->conn->error);
 		return $temp;
 	}

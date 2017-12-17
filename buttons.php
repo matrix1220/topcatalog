@@ -1,5 +1,9 @@
 <?php
 	const TOKEN = "438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg";
+	const DB_HOST = "localhost";
+	const DB_USER = "yiacatal_user";
+	const DB_PASS = "*7k]6Ex0nO4B";
+	const DB_NAME = "yiacatal_base";
 	const BOT_USERNEME = "CatalogiyaBot";
 	const CHANNEL = "@catalogiya";
 	const JOINCHAT = "https://t.me/joinchat/";
@@ -21,7 +25,7 @@
 	const B_LIKE = "Like";
 	const B_NEXT = "Keyingisi";
 	const B_PREV = "Oldingisi";
-	const B_THE = "💲Eng ✖️Eng Aksiyasi";
+	const B_THE = "🔹Aksiya";
 	const B_THE_CHANNEL = "Eng ko'p like yig'gan kanal";
 	const B_THE_USER = "Eng kop ochko toplagan obunachi";
 	const B_COLLECT = "Ochko toplash";
@@ -105,15 +109,7 @@ G'oliblar 31-dekabr kuni e'lon qilinadi</i>";
 🔸Buning uchun shunchaki </i><b>Omad</b> tugmasini bosing✔️ hamda turli ochkolarga ega bo'lib qanchalik omadli inson ekanligizni bilib oling😊
 <b>Eng katta yutuq</b> 5000ochko
 <b>O'yinda qatnashish</b> 200 ochko";
-	const T_THE = "<b>💲ENG                   ✖️ ENG 
-            AKSIYASI
-
-🏆Eng ko'p LIKE yig'gan KANAL</b>
-<i>🥇1-o'rin 50ming so'm
-🥈2-o'rin 30ming so'm
-🥉3-o'rin 20ming so'm</i>
-
-<b>🏆Eng ko'p OCHKO to'plagan obunachi</b>
+	const T_THE = "<b>🏆Eng ko'p OCHKO to'plagan obunachi</b>
 <i>🥇1-o'rin 100ming so'm
 🥈2-o'rin 60ming so'm
 🥉3-o'rin 40ming so'm</i>
@@ -123,7 +119,12 @@ Batafsil👇";
 	const T_CONTACT_1 = "Savollar bo'lsa yozib qoldiring\n\n<b>⚠️Faqat shu bot haqidagi savollarni yozib qoldiring‼️</b>";
 	const T_CONTACT_2 = "Tez fursatlarda javob berishga harakat qilamiz";
 	function T_WELCOM($name) {
-		return Telegrambot::HTML("Salom ".$name."\nEng sara kanallar Katalogi\n🌀 ".CHANNEL." kanalining robotiga Xush kelibsiz\n\nBotdan to'liq foydalanish uchun ".CHANNEL." kanaliga obuna bo'ling");
+		return "👋Salom <b>".Telegrambot::HTML($name)."</b>
+<i>Eng sara kanallar</i> <b>Katalogi</b>
+🌀 @CaTaLoGiYa <i>kanalining robotiga</i> <b>Xush kelibsiz</b>
+
+<i>⚠️Botdan to'liq foydalanish uchun 🌀 @Catalogiya kanaliga obuna bo'ling hamda botdan qanday foydalanish haqida bilish uchun</i> 
+/help <i>ni bosing</i>";
 	}
 	const T_ABOUT = "Hurmatli obunachilar bu bot         🌀 @YIAMEGA buyurtmasiga binoan 🔹 @UzProBoys jamoasi tomonidan yasalgan.
 Bu botni yasashda
@@ -207,13 +208,12 @@ O'yinda qatnashish uchun siz 1dan 30 gacha bo'lgan ixtiyoriy son tanlaysiz. Agar
 	function CHANNEL_POST($channel) {
 		return '<a href="'.$channel->cover.'">▪️</a><b>Kanal</b> <a href="https://telegram.me/'.urlencode(substr($channel->username,1)).'">'.Telegrambot::HTML($channel->title)."</a>\n\n<b>📋Info:</b> <i>".Telegrambot::HTML($channel->description)."</i>\n\n<b>🔜Yo'nalish</b> <i>".Telegrambot::HTML($GLOBALS['CATEGORYS'][$channel->category])."</i>";
 	}
-	function T_INLINE($channel) {
-		return "Shu havola 
-".'<a href="http://sn.uploads.im/iPLjx.jpg">👉</a>'." https://t.me/CatalogiyaBot?start=1-".$channel->id."
+	function T_INLINE($channel) { //'<a href="http://sn.uploads.im/iPLjx.jpg">👉</a>'
+		return "Shu havola
+👉 https://t.me/CatalogiyaBot?start=1-".$channel->id."
 Orqali  🔹 ".$channel->username."   kanaliga <b>LIKE</b> bosib, 🔅sevimli kanalingizni qo'llab quvvatlang✔️
 
-<i>Siz bu botda</i> <b>🔸LOTOREYA</b> <i>o'ynashingiz, o'z</i> <b>🔹OMAD</b><i>ingizni sinab ko'rishingiz hamda</i>
- <b>🔺100ming 💸so'm</b> <i>pul yutug'iga ega bo'lishingiz mumkin💯</i>
+<i>Siz bu botda</i> <b>🔸LOTOREYA</b> <i>o'ynashingiz, o'z</i> <b>🔹OMAD</b><i>ingizni sinab ko'rishingiz mumkin💯</i>
 <b>Batafsil👇👇</b>";
 	}
 	function T_SUPPORT($from) {
@@ -225,5 +225,8 @@ Orqali kirib do'stingiz
 <i>Siz bu botda</i> <b>🔸LOTOREYA</b> <i>o'ynashingiz, o'z</i> <b>🔹OMAD</b><i>ingizni sinab ko'rishingiz hamda</i>
  <b>🔺100ming 💸so'm</b> <i>pul yutug'iga ega bo'lishingiz mumkin💯</i>
 <b>Batafsil👇👇</b>";
+	}
+	function T_SUPPORT_2($from) {
+		return "Do'stinggiz ".'<a href="tg://user?id='.$from->id.'">'.$from->first_name.'</a>'." dan ochko";
 	}
 ?>

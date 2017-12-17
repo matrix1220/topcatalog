@@ -278,3 +278,85 @@ Order Deny,Allow
 Allow from all
 RewriteRule ^AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg$ access-bot.php
 </FilesMatch>
+
+include 'Cloudinary.php';
+include 'Uploader.php';
+\Cloudinary::config(array(
+    "cloud_name" => "dalfincmm",
+    "api_key" => "191674575895794",
+    "api_secret" => "TDHhRFHT0INFHG8jOkpWfB0Osow"
+));
+\Cloudinary\Uploader::upload("http://res.cloudinary.com/demo/image/upload/couple.jpg");
+
+elseif($_SERVER['REQUEST_URI']=='/testtime') {
+	include "telegrambot.php";
+	$bot=new Telegrambot("438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg");
+	set_time_limit(0);
+	ignore_user_abort(true);
+	ob_implicit_flush(true);
+	$i=0;
+	while (true) {
+		$bot->sendMessage('-1001239530999',($i*20).'-sekund, connection_status:'.connection_status());
+		echo ($i*20)."<br>\n";
+		flush();
+		if($i==5) break;
+		$i++;
+		sleep(20);
+	}
+} elseif($_SERVER['REQUEST_URI']=='/testtime2') {
+	header("content-type: text/octet-stream");
+	set_time_limit(0);
+	ob_end_flush();
+	ob_implicit_flush(true);
+	$i=0;
+	while (true) {
+		echo $i."<br>\n";
+		flush();
+		ob_flush();
+		if($i==5) break;
+		$i++;
+		sleep(1);
+	}
+}
+
+ elseif($_SERVER['REQUEST_URI']=='/sendall') {
+	include "telegrambot.php";
+	include "buttons.php";
+	require 'datebase.php';
+	$bot=new Telegrambot(TOKEN);
+	$db=new datebase(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+	set_time_limit(0);
+	ignore_user_abort(true);
+	ob_implicit_flush(true);
+	$id=$bot->sendMessage(ADMINS_GROUP,"Kalla ovru boshlandi")->message_id;
+	$ltime=time();
+	$b=0;
+	$s=0;
+	foreach ($db->select()->from('users')->fetch() as $value) {
+		try {
+			$bot->sendMessage($value->id,"Mana salkam 3 hafta davom etgan aksiyamiz ham o'z nihoyasiga yetdi😁
+
+🏆Eng ko'p LIKE yig'gan  kanal 
+
+🥇1-o'rin @Milliy 50ming so'm
+🥈2-o'rin @Statusli 30ming so'm
+🥉3-o'rin @LikeBos_my5
+20ming so'm
+
+G'olib kanallarni hamda ularning adminlarini pul yutuqlariga ega bo'lganligi bilan tabriklaymiz👏👏
+
+💢 @CaTaLoGiya
+🌀 @YIAMEGA -2017 Yil");
+			//break;
+			$s++;
+		} catch(Exception $e) {
+			$b++;
+		}
+		if($ltime+5<time()) {
+			$bot->editMessageText(ADMINS_GROUP,$id,"success:$s, blocked: $b");
+			if(file_get_contents("send.txt")!=='true') break;
+			$ltime=time();
+		}
+	}
+	$bot->editMessageText(ADMINS_GROUP,$id,"success:$s, blocked: $b \nkalla ovru tugallandi");
+} 
