@@ -12,7 +12,8 @@
 				if(!$channel->valid()) throw new Exception("Like bosishda xatolik");
 				$channel=$channel->current();
 				if($channel->likes!=$data[2]) {
-					$bot->editMessageReplyMarkup(CHANNEL,$message->message_id,[[$bot->inlineKeyboardButton(B_LIKE.' ('.$channel->likes.')','0:'.$data[1].':'.$channel->likes)],[['text'=>'A\'zo bo\'lish','url'=>'https://telegram.me/'.substr($channel->username,1)]]]);
+					$bot->sendMessage(ADMINS,$channel->likes.":".$data[2]);
+					$bot->editMessageReplyMarkup(CHANNEL,$message->message_id,[[$bot->inlineKeyboardButton(B_LIKE.' ('.$channel->likes.')','0:'.$data[1].':'.$channel->likes)],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($channel->username,1)]]]);
 				}
 			}
 		} else {
@@ -23,7 +24,7 @@
 				$channel=$db->select()->from('channels')->where('id='.$db->escape($data[1]))->fetch();
 				if(!$channel->valid()) throw new Exception("Like bosishda xatolik");
 				$channel=$channel->current();
-				$bot->editMessageReplyMarkup(CHANNEL,$message->message_id,[[$bot->inlineKeyboardButton(B_LIKE.' ('.$channel->likes.')','0:'.$data[1].':'.$channel->likes)],[['text'=>'A\'zo bo\'lish','url'=>'https://telegram.me/'.substr($channel->username,1)]]]);
+				$bot->editMessageReplyMarkup(CHANNEL,$message->message_id,[[$bot->inlineKeyboardButton(B_LIKE.' ('.$channel->likes.')','0:'.$data[1].':'.$channel->likes)],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($channel->username,1)]]]);
 			}
 		}
 	} elseif($data[0]==='1') { // next
@@ -47,7 +48,7 @@
 Shu havola orqali
 https://t.me/CatalogiyaBot?start=1-".$temp->id." yoki Havolani tarqatish orqali kanalingizga Like yig'ing va kanalingizni eng zo'rligini isbotlang
 <b>Batafsil👇👇</b>",$bot->inlineKeyboard([[['text'=>'Tarqatish','switch_inline_query'=>$temp->id]]]));
-			$bot->sendMessage(CHANNEL,CHANNEL_POST($temp),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp->id.':0')],[['text'=>'A\'zo bo\'lish','url'=>'https://telegram.me/'.substr($temp->username,1)]]]));
+			$bot->sendMessage(CHANNEL,CHANNEL_POST($temp),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp->username,1)]]]));
 		} else {
 			$bot->answerCallbackQuery($callback->id,['text'=>'Bu kanal boshqa holatda']);
 		}
@@ -116,37 +117,60 @@ https://t.me/CatalogiyaBot?start=1-".$temp->id." yoki Havolani tarqatish orqali 
 		}
 	} elseif($data[0]==='7') { // eng eng eng
 		try {
-		if($data[1]=='0') {
-			$bot->answerCallbackQuery($callback->id);
-			$bot->editMessageText($from->id,$message->message_id,T_THE,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_THE_USER,'7:2')]]));
-		} elseif($data[1]=='1') {
-			$bot->answerCallbackQuery($callback->id);
-			$bot->editMessageText($from->id,$message->message_id,T_THE_CHANNEL,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_ADD,'12')],[$bot->inlineKeyboardButton(B_BACK,'7:0')]]));
-		} elseif($data[1]=='2') {
-			$bot->answerCallbackQuery($callback->id);
-			$bot->editMessageText($from->id,$message->message_id,T_THE_USER,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_COLLECT,'7:4')],[$bot->inlineKeyboardButton(B_BACK,'7:0')]]));
-		} elseif($data[1]=='3') {
-		} elseif($data[1]=='4') {
-			$bot->answerCallbackQuery($callback->id);
-			$temp=$db->select()->from('users')->where('id='.$from->id)->fetch()->current()->ball;
-			$bot->editMessageText($from->id,$message->message_id,"<i>Sizda</i>      <b>💎ochko</b> ".$temp." 
+			if($data[1]=='0') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_THE,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_THE_USER,'7:2')]]));
+			} elseif($data[1]=='1') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_THE_CHANNEL,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_ADD,'12')],[$bot->inlineKeyboardButton(B_BACK,'7:0')]]));
+			} elseif($data[1]=='2') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_THE_USER,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_COLLECT,'7:4')],[$bot->inlineKeyboardButton(B_BACK,'7:0')]]));
+			} elseif($data[1]=='3') {
+			} elseif($data[1]=='4') {
+				$bot->answerCallbackQuery($callback->id);
+				$temp=$db->select()->from('users')->where('id='.$from->id)->fetch()->current()->ball;
+				$bot->editMessageText($from->id,$message->message_id,"<i>Sizda</i>      <b>💎ochko</b> ".$temp." 
 
-<b>Eng ko'p ochko</b> to'plab <b>🔺100ming so'm</b> 💸pul yutug'iga ega bo'ling💯
-<b>👇Ochko to'plash uchun👇</b>",$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_INVITE,'7:5')],[$bot->inlineKeyboardButton(B_LOTTERY,'7:6'),$bot->inlineKeyboardButton(B_LUCK,'7:7')],[$bot->inlineKeyboardButton("Kanallarga qo'shilish",'11')],[$bot->inlineKeyboardButton(B_BACK,'7:2')]]));
-		} elseif($data[1]=='5') {
-			$bot->answerCallbackQuery($callback->id);
-			$bot->editMessageText($from->id,$message->message_id,"<i>👤bu botga</i> <b>a'zo bo'lmagan</b> <i>Do'stlaringizni</i> <b>taklif qiling</b> <i>hamda qimmatli</i> <b>".INVITE_BALL." ochkoga</b> <i>ega bo'ling
+	<b>Eng ko'p ochko</b> to'plab <b>🔺100ming so'm</b> 💸pul yutug'iga ega bo'ling💯
+	<b>👇Ochko to'plash uchun👇</b>",$bot->inlineKeyboard([
+					[$bot->inlineKeyboardButton(B_INVITE,'7:5')],
+					[$bot->inlineKeyboardButton(B_LOTTERY,'7:6'),$bot->inlineKeyboardButton(B_LUCK,'7:7')],
+					[$bot->inlineKeyboardButton("Kanallarga qo'shilish",'11')],
+					[$bot->inlineKeyboardButton(B_BUY,'7:9'),$bot->inlineKeyboardButton(B_SHARE,'7:8')],
+					[$bot->inlineKeyboardButton(B_BACK,'7:2')]
+				]));
+			} elseif($data[1]=='5') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,"<i>👤bu botga</i> <b>a'zo bo'lmagan</b> <i>Do'stlaringizni</i> <b>taklif qiling</b> <i>hamda qimmatli</i> <b>".INVITE_BALL." ochkoga</b> <i>ega bo'ling
 
-Do'stlarni taklif qilish uchun havola(silka)</i>\n👉 t.me/".BOT_USERNEME."?start=0-".$from->id,$bot->inlineKeyboard([[['text'=>'Havolani tarqatish','switch_inline_query'=>'0']],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
-		} elseif($data[1]=='6') {
-			$bot->answerCallbackQuery($callback->id);
-			$bot->editMessageText($from->id,$message->message_id,T_LOTTERY,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Qatnashish','6')],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
-		} elseif($data[1]=='7') {
-			$bot->answerCallbackQuery($callback->id);
-			$bot->editMessageText($from->id,$message->message_id,T_LUCK,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Omad','5')],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
-		} elseif($data[1]=='8') {
-//👤Do'stlaringizga o'z ochkolaringizni  ulashing hamda ularni quvontiring😁\n🔘Bir kunda 200 ochko o'tkazishingiz mumkin
-		}
+	Do'stlarni taklif qilish uchun havola(silka)</i>\n👉 t.me/".BOT_USERNEME."?start=0-".$from->id,$bot->inlineKeyboard([[['text'=>'Havolani tarqatish','switch_inline_query'=>'0']],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
+			} elseif($data[1]=='6') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_LOTTERY,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Qatnashish','6')],[$bot->inlineKeyboardButton(B_WINNERS,'7:13')],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
+			} elseif($data[1]=='7') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_LUCK,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Omad','5')],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
+			} elseif($data[1]=='8') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_SHARE,$bot->inlineKeyboard([[['text'=>B_SHARE,'switch_inline_query'=>'1']],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
+			} elseif($data[1]=='9') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_BUY,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_BUY_1,'7:10')],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
+			} elseif($data[1]=='10') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_BUY_1,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_BACK,'7:9')]]));
+			} elseif($data[1]=='11') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_ADS_CHANNEL,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_ADD,'7:12')],[$bot->inlineKeyboardButton(B_BACK,'11')]]));
+			} elseif($data[1]=='12') {
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,T_ADS_CHANNEL_1,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_BACK,'7:11')]]));
+			} elseif($data[1]=='13') {
+				$temp=$db->query('select * from lottery_winners order by `date` desc limit 10')->fetch();
+				$bot->answerCallbackQuery($callback->id);
+				$bot->editMessageText($from->id,$message->message_id,lottery_winners($temp),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_BACK,'7:6')]]));
+			}
 		} catch(Exception $e) {
 			//
 		}
@@ -246,7 +270,7 @@ Do'stlarni taklif qilish uchun havola(silka)</i>\n👉 t.me/".BOT_USERNEME."?sta
 		// }
 		$text.="\n<b>Kanalga a'zo bo'lgach yangilashni bosing</b>";
 		try {
-			$bot->editMessageText($from->id,$message->message_id,$text,$bot->inlineKeyboard([[$bot->inlineKeyboardButton("Yangilash",'11')],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
+			$bot->editMessageText($from->id,$message->message_id,$text,$bot->inlineKeyboard([[$bot->inlineKeyboardButton("Yangilash",'11')],[$bot->inlineKeyboardButton(B_ADS_CHANNEL,'7:11')],[$bot->inlineKeyboardButton(B_BACK,'7:4')]]));
 			$bot->answerCallbackQuery($callback->id);
 		} catch(Exception $e) {
 			$bot->answerCallbackQuery($callback->id,['text'=>'Yangilandi']);
@@ -293,5 +317,25 @@ Do'stlarni taklif qilish uchun havola(silka)</i>\n👉 t.me/".BOT_USERNEME."?sta
 		} else {
 			$bot->answerCallbackQuery($callback->id,['text'=>"O'zinggizning ochkoinggizni ololmaysiz"],true,3600);
 		}
+	} elseif($data[0]==='14') {
+		if(isset($data[1])) $current=$data[1]; else $current=mktime(0,0,0);
+		$next=$current-3600*24; $prev=$current+3600*24;
+		$temp=$db->query("select * from jakpot_winners where `time`>=".$current.' and `time`<'.$prev)->fetch();
+		// if($temp->valid()) {
+			$bot->answerCallbackQuery($callback->id);
+			try {
+				$bot->editMessageText($from->id,$message->message_id,date("d.m.y",$current)." ".jakpot_winners($temp),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_PREV,'14:'.$prev),$bot->inlineKeyboardButton(B_NEXT,'14:'.$next)]]));
+			} catch(Exception $e) {
+				
+			}
+		// } else {
+		// 	if(!isset($data[1])) {
+		// 		$bot->answerCallbackQuery($callback->id);
+		// 	} else {
+		// 		$bot->answerCallbackQuery($callback->id,['text'=>'boshqa g\'oliblar yo\'q'],true,60);
+		// 	}
+		// }
+		//
+	} elseif($data[0]==='15') {
 	}
 ?>

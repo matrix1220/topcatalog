@@ -21,7 +21,8 @@
 					}
 				}
 				$bot->sendMessage($from->id,T_WELCOM($from->first_name),$bot->replyKeyboard($MAIN_KEYBOARD));
-				$bot->method('sendPhoto',['chat_id'=>$from->id,"photo"=>"AgADAgADlqgxG-hIaUj1rSSHh4EsAzPYDw4ABCjTs5rypO-hk_0CAAEC"]);
+				//$bot->method('sendPhoto',['chat_id'=>$from->id,"photo"=>"AgADAgADlqgxG-hIaUj1rSSHh4EsAzPYDw4ABCjTs5rypO-hk_0CAAEC"]);
+				$bot->sendMessage($from->id,T_LOTTERY,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Qatnashish','6')],[$bot->inlineKeyboardButton(B_WINNERS,'7:13')]]));
 			} elseif(count($temp)==2 and $temp[0]=='1') {
 				$channel=$db->select()->from('channels')->where('id='.$db->escape($temp[1]))->fetch();
 				if($user->valid() and !$channel->valid()) {
@@ -85,6 +86,7 @@
 				$db->insert()->into('users')->set(['id'=>$from->id,'action'=>0,'ball'=>0])->exec();
 			}
 			$bot->sendMessage($from->id,T_WELCOM($from->first_name),$bot->replyKeyboard($MAIN_KEYBOARD));
-			$bot->method('sendPhoto',['chat_id'=>$from->id,"photo"=>"AgADAgADlqgxG-hIaUj1rSSHh4EsAzPYDw4ABCjTs5rypO-hk_0CAAEC"]);
+			//$bot->method('sendPhoto',['chat_id'=>$from->id,"photo"=>"AgADAgADlqgxG-hIaUj1rSSHh4EsAzPYDw4ABCjTs5rypO-hk_0CAAEC"]);
+			$bot->sendMessage($from->id,T_LOTTERY,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Qatnashish','6')],[$bot->inlineKeyboardButton(B_WINNERS,'7:13')]]));
 		}
 ?>

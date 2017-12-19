@@ -111,9 +111,10 @@ if(isset($input->message)) {
 			$winner=@$bot->method('getChat',['chat_id'=>$temp->user]);
 			if($winner->ok) $winner=$winner->result->first_name;
 			else $winner="Shu odam";
-			$wtext="<i>Bugungi</i> <b>LOTOREYA</b> <i>o'ynimiz g'olibi</i> ".'<a href="tg://user?id='.$temp->user.'">'.$winner.'</a>'." <i>bo'ldi.</i>\n<b>G'olibimizni 555 ochkoga ega bo'lganligi bilan tabriklaymiz</b>👏👏\n<i>Lotoreyada ".$all." ta odam qatnashadi</i>";
+			$wtext="<i>Bugungi</i> <b>LOTOREYA</b> <i>o'ynimiz g'olibi</i> ".'<a href="tg://user?id='.$temp->user.'">'.$winner.'</a>'." <i>bo'ldi.</i>\n<b>G'olibimizni 🔹3333 so'm hamda 🔸333 ochko yutib olganligi bilan tabriklaymiz</b>👏👏\n<i>Lotoreyada ".$all." ta odam qatnashdi</i>";
+			$db->insert()->into('lottery_winners')->set(['date'=>time(),'user'=>$temp->user,'name'=>$winner])->exec();
 			$bot->sendMessage(CHANNEL,$wtext);
-			$db->query('update users set ball=ball+555 where id='.$temp->user)->exec();
+			$db->query('update users set ball=ball+333 where id='.$temp->user)->exec();
 			$ids = [];
 			foreach ($db->select()->from('lottery')->fetch() as $value) $ids[]=$value->user;
 			$db->delete()->from('lottery')->exec();
@@ -172,6 +173,10 @@ if(isset($input->message)) {
 			}
 		}
 	} elseif($input->cron=='4') {
+		set_time_limit(0);
+		ignore_user_abort(true);
+		$temp=$db->query('select * from jakpot_winners order by id desc limit 1')->fetch();
+		if($temp->valid()) $id=$temp->current()->id+1; else $id=1;
 		$r=rand(1,30);
 		$winners=[];
 		foreach ($db->select()->from('jakpot')->where('number='.$r)->fetch() as $value) $winners[]=$value->user;
@@ -179,18 +184,72 @@ if(isset($input->message)) {
 			$text="jakpot da g'oliblar ($r):\nyo'q";
 		} else {
 			$p=round(500/count($winners));
-			$text="jakpot da g'oliblar ($r) ($p):\n";
+			$text="🔘O'yin $id\n🔢Son $r\n";
 			foreach ($winners as $value) {
 				$db->query('update users set ball=ball+'.$p.' where id='.$value)->exec();
 				$temp=@$bot->method("getChat",["chat_id"=>$value]);
 				if($temp->ok) $temp=$temp->result->first_name;
 				else $temp="Foydalanuvchi";
-				$text.='<a href="tg://user?id='.$value.'">'.$temp.'</a>'."\n";
+				$text.='🎗G\'olib <a href="tg://user?id='.$value.'">'.Telegrambot::HTML($temp).'</a>'."\n";
+				$db->insert()->into('jakpot_winners')->set(['id'=>$id,'number'=>$r,'name'=>$temp,'user'=>$value,'time'=>time()])->exec();
+			}
+			$text.="G'olib(lar)imizni qimmatli ochkolarga ega bo'lganligi bilan tabriklaymiz👏👏\nO'yinda ".count($winners)." odam qatnashdi";
+			foreach ($db->select()->from('jakpot')->fetch() as $value) {
+				$bot->sendMessage($value->user,$text);
 			}
 		}
 		$db->delete()->from('jakpot')->exec();
 		$bot->sendMessage(ADMINS_GROUP,$text);
-	} elseif($input->cron=='5') { // worker	
+	} elseif($input->cron=='5') { // channel default
+		$temp=$db->query('select * from `channels_history` where status=1')->fetch();
+		if($temp->valid()) {
+			$temp=$temp->current();
+			if($temp->type=='1') {
+				$db->update('channels_history')->set(['status'=>0])->where('id='.$temp->id)->exec();
+				$temp=$db->select()->from('channels_history')->where('status=2')->fetch();
+				if($temp->valid()) {
+					$temp=$temp->current();
+					$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
+					$bot->sendMessage(CHANNEL,CHANNEL_POST($temp1),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp1->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp1->username,1)]]]));
+					$db->update('channels_history')->set(['status'=>1])->where('id='.$temp->id)->exec();
+				}
+			} elseif($temp->type=='2') {
+				if(isset($temp->cs) and $temp->cs=='1') {
+					$db->update('channels_history')->set(['status'=>0])->where('id='.$temp->id)->exec();
+					$temp=$db->select()->from('channels_history')->where('status=2')->fetch();
+					if($temp->valid()) {
+						$temp=$temp->current();
+						$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
+						$bot->sendMessage(CHANNEL,CHANNEL_POST($temp1),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp1->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp1->username,1)]]]));
+						$db->update('channels_history')->set(['status'=>1])->where('id='.$temp->id)->exec();
+					}
+				} else {
+					$db->update('channels_history')->set(['cs'=>'1'])->where('id='.$temp->id)->exec();
+				}
+			} elseif($temp->type=='3') {
+				$db->update('channels_history')->set(['status'=>0])->where('id='.$temp->id)->exec();
+				$temp=$temp->current();
+				$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
+				$bot->sendMessage(CHANNEL,CHANNEL_POST($temp1),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp1->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp1->username,1)]]]));
+				$db->update('channels_history')->set(['status'=>1])->where('id='.$temp->id)->exec();
+			}
+		} else {
+			$temp=$db->select()->from('channels_history')->where('status=2')->fetch();
+			if($temp->valid()) {
+				$temp=$temp->current();
+				$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
+				$bot->sendMessage(CHANNEL,CHANNEL_POST($temp1),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp1->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp1->username,1)]]]));
+				$db->update('channels_history')->set(['status'=>1])->where('id='.$temp->id)->exec();
+			}
+		}
+	} elseif($input->cron=='6') { // channel night
+		$temp=$db->query('select * from `channels_history` where type=2')->fetch();
+		if($temp->valid()) {
+			$temp=$temp->current();
+			$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
+			$bot->sendMessage(CHANNEL,CHANNEL_POST($temp1),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp1->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp1->username,1)]]]));
+			$db->update('channels_history')->set(['status'=>1])->where('id='.$temp->id)->exec();
+		}
 	}
 } elseif(isset($input->inline_query)) {
 	$inline=&$input->inline_query;

@@ -78,3 +78,13 @@ Yo'nalishlar:
 
 
 
+channels_history
+id
+channel
+type [1,2,3]
+status [0-jo'natilgan,1-activ,2-activ emas]
+
+lottery_winners
+ date
+ user
+ name

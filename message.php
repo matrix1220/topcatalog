@@ -28,12 +28,14 @@
 					$db->update('users')->set(['action'=>13])->where('id='.$from->id)->exec();
 					$bot->sendMessage($from->id,B_EXTRA,$bot->replyKeyboard($EXTRA_KEYBOARD));
 				} elseif($message->text==B_LOTTERY) {
-					$bot->sendMessage($from->id,T_LOTTERY,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Qatnashish','6')]]));
+					$bot->sendMessage($from->id,T_LOTTERY,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Qatnashish','6')],[$bot->inlineKeyboardButton(B_WINNERS,'7:13')]]));
 				} elseif($message->text==B_THE) {
 					//$db->update('users')->set(['action'=>9])->where('id='.$from->id)->exec();
 					$bot->sendMessage($from->id,T_THE,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_THE_USER,'7:2')]]));
 				} elseif($message->text==B_LUCK) {
 					$bot->sendMessage($from->id,T_LUCK,$bot->inlineKeyboard([[$bot->inlineKeyboardButton('Omad','5')]]));
+				} elseif($message->text==B_LN) {
+					$bot->sendMessage($from->id,T_15,$bot->inlineKeyboard([[$bot->inlineKeyboardButton("Son tanlash","10")],[$bot->inlineKeyboardButton(B_WINNERS,'14')]]));
 				} else {
 					$bot->sendMessage($from->id,"Tanlang:",$bot->replyKeyboard($MAIN_KEYBOARD));
 				}
@@ -46,8 +48,6 @@
 				} elseif($message->text==B_BACK) {
 					$db->update('users')->set(['action'=>0])->where('id='.$from->id)->exec();
 					$bot->sendMessage($from->id,T_0,$bot->replyKeyboard($MAIN_KEYBOARD));
-				} elseif($message->text==B_LN) {
-					$bot->sendMessage($from->id,T_15,$bot->inlineKeyboard([[$bot->inlineKeyboardButton("Son tanlash","10")]]));
 				} else {
 					$bot->sendMessage($from->id,"Tanlang:",$bot->replyKeyboard($EXTRA_KEYBOARD));
 				}
