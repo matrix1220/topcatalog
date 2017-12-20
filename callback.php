@@ -12,8 +12,12 @@
 				if(!$channel->valid()) throw new Exception("Like bosishda xatolik");
 				$channel=$channel->current();
 				if($channel->likes!=$data[2]) {
-					$bot->sendMessage(ADMINS,$channel->likes.":".$data[2]);
-					$bot->editMessageReplyMarkup(CHANNEL,$message->message_id,[[$bot->inlineKeyboardButton(B_LIKE.' ('.$channel->likes.')','0:'.$data[1].':'.$channel->likes)],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($channel->username,1)]]]);
+					$bot->sendMessage(ADMIN,$channel->likes.":".$data[2]);
+					try {
+						$bot->editMessageReplyMarkup(CHANNEL,$message->message_id,[[$bot->inlineKeyboardButton(B_LIKE.' ('.$channel->likes.')','0:'.$data[1].':'.$channel->likes)],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($channel->username,1)]]]);
+					} catch(Exception $e) {
+						//
+					}
 				}
 			}
 		} else {
