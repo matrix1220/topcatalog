@@ -1,9 +1,9 @@
 <?php
 	const TOKEN = "438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg";
 	const DB_HOST = "localhost";
-	const DB_USER = "yiacatal_user";
-	const DB_PASS = "*7k]6Ex0nO4B";
-	const DB_NAME = "yiacatal_base";
+	const DB_USER = "anderson";
+	const DB_PASS = "a43jh5fA85y46g";
+	const DB_NAME = "andersoneo";
 	const BOT_USERNEME = "CatalogiyaBot";
 	const CHANNEL = "@catalogiya";
 	const JOINCHAT = "https://t.me/joinchat/";
@@ -145,11 +145,11 @@ Bu botni yasashda
 🔹 @CatalogiyaBot";
 	const T_LOTTERY = "<b>💸Lotoreya</b>
 
-<i>🔸Bu shunchaki omadlilarga kulib boqadigan to'liq avtomatlashgan tekin o'yin bo'lib, bot barcha qatnashuvchilardan bittasini tasodifiy ravishda tanlashi orqali g'olib aniqlanadi hamda o'yin g'olibi 💸3333 so'm va 333 ochkoga ega bo'ladi
-🔹O'yinda qatnashish uchun shunchaki CHIPTA oling, balkim bugun OMAD sizga kulib boqar</i>
+🔸Bu shunchaki omadlilarga kulib boqadigan to'liq avtomatlashgan tekin o'yin bo'lib, bot barcha qatnashuvchilardan bittasini tasodifiy ravishda tanlashi orqali g'olib aniqlanadi hamda o'yin g'olibi  333 ochkoga ega bo'ladi
+🔹O'yinda qatnashish uchun shunchaki CHIPTA oling, balkim bugun OMAD sizga kulib boqar
 
-<b>📋Natijalar har kuni 
-  🕦 21:00 da e'lon qilinadi</b>
+📋Natijalar har kuni 
+  🕦 21:00 da e'lon qilinadi
 
 ⚠️O'yinda faqat 
 🔹 @CaTaloGiya  kanaliga a'zo bo'lganlargina qatnasha oladi";
@@ -160,8 +160,21 @@ Bu botni yasashda
 
 	const T_0 = "Bosh menyu:";
 
-	const T_1 = "Kanal qo'shish ".ADD_BALL." ochko davom etasizmi?";
-	const T_1E_1 = "Kanal qo'shish ".ADD_BALL." ochko\nSizda yetarli ochko mavjud emas";
+	const T_1 = "Kanaliz katalogga qo'shilgach
+🌀 @Catalogiya kanalida qancha vaqt TOPda turishini tanlang👇
+▪️1 soat top: 300 ochko
+▪️2 soat top: 700 ochko
+▪️Tungi(noch): 1500 ochko
+
+⚠️Kanaliz qo'shilgach birinchi TOPda turadi, Top vaqti tugagach lentada qoladi
+Kanaliz ma'lum sabablarsiz lentadan o'chirilmaydi";
+	const B_TOP_1 = "1 soat";
+	const B_TOP_2 = "2 soat";
+	const B_TOP_NIGHT = "Tungi";
+	const ADD_1_BALL = 300;
+	const ADD_2_BALL = 700;
+	const ADD_NIGHT_BALL = 1500;
+	const T_1E_1 = "Sizda yetarli ochko mavjud emas";
 	const T_1E_2 = "Kanalimizga ".CHANNEL." a'zo bo'ling va qaytadan urinib ko'ring";
 	const B_YES = "Ha";
 
@@ -187,11 +200,13 @@ Bu botni yasashda
 
 	const T_15 = "🔢Omadli son
 
-O'yinda qatnashish uchun siz 1dan 30 gacha bo'lgan ixtiyoriy son tanlaysiz. Agar siz tanlagan son bot   tasodifiy tarzda  tanlagan son bilan bilan bir  xil.bo'lsa siz o'yin g'olibi bo'lasiz
+O'yinda qatnashish uchun siz
+ 1 dan 30 gacha bo'lgan ixtiyoriy son tanlaysiz. Agar siz tanlagan son bot  tasodifiy tarzda  tanlagan son bilan bir xil bo'lsa siz o'yin g'olibi bo'lasiz
 ⚠️Agar g'oliblar bir nechta bo'lsa yutuq g'oliblar o'rtasida teng bo'linadi
 🕛O'yin bir kunda har 3 soatdan 5marta o'tkaziladi
-🏆Jekpot 1000ochko
-🔸O'yinda qatnashish 50ochko";
+🏆Jekpot 500ochko
+
+⚠️O'yinda faqat @Catalogiya kanaliga a'zo bo'lganlargina qatnasha oladi";
 	const T_15_1 = "1dan 30 gacha bo'lgan son tanlang";
 	function T_15_2() {
 		$temp=date("G");
@@ -234,14 +249,14 @@ Orqali  🔹 ".$channel->username."   kanaliga <b>LIKE</b> bosib, 🔅sevimli ka
 		return "Shu havola 
 ".'<a href="http://sn.uploads.im/iPLjx.jpg">👉</a>'." https://t.me/CatalogiyaBot?start=0-".$from->id."
 Orqali kirib do'stingiz
-🔹 ".'<a href="tg://user?id='.$from->id.'">'.$from->first_name.'</a>'." ni qo'llab quvvatlang✔️
+🔹 ".'<a href="tg://user?id='.$from->id.'">'.Telegrambot::HTML($from->first_name).'</a>'." ni qo'llab quvvatlang✔️
 
 <i>Siz bu botda</i> <b>🔸LOTOREYA</b> <i>o'ynashingiz, o'z</i> <b>🔹OMAD</b><i>ingizni sinab ko'rishingiz hamda</i>
  <b>🔺100ming 💸so'm</b> <i>pul yutug'iga ega bo'lishingiz mumkin💯</i>
 <b>Batafsil👇👇</b>";
 	}
 	function T_SUPPORT_2($from) {
-		return "Do'stinggiz ".'<a href="tg://user?id='.$from->id.'">'.$from->first_name.'</a>'." dan ochko";
+		return "Do'stinggiz ".'<a href="tg://user?id='.$from->id.'">'.Telegrambot::HTML($from->first_name).'</a>'." dan ochko";
 	}
 	const B_SHARE = "Ochko ulashish";
 	const T_SHARE = "👤Do'stlaringizga o'z ochkolaringizni  ulashing hamda ularni quvontiring😁
@@ -264,10 +279,15 @@ To'lov turi: Click yoki Payme
 ▪️ @Professor111 ga yozing";
  function jakpot_winners($winners) {
  	$temp= "🔢Omadli son o'yinimizning g'oliblari bo'lgan omadli insonlar bilan tanishing👇\n";
- 	if(!$winners->valid()) {
+ 	if(empty($winners)) {
  		$temp.="\nYo'q";
  	} else foreach ($winners as $value) {
- 		$temp.="\n🔘O'yin ".$value->id."\n🔢Son ".$value->number."\n🎗G'olib ".'<a href="tg://user?id='.$value->user.'">'.Telegrambot::HTML($value->name).'</a>';
+ 		$temp.="\n🔘O'yin ".$value['id']."\n🔢Son ".$value['number']."\n🎗G'olib(lar) ";
+ 		if(empty($value['winners'])) {
+ 			$temp.="Yo'q";
+ 		} else foreach ($value['winners'] as $value1) {
+ 			$temp.="\n".'- <a href="tg://user?id='.$value1['user'].'">'.Telegrambot::HTML($value1['name']).'</a>';
+ 		}
  	}
 	$temp.="\n\n✔️O'yinda qatnashing balkim bugun omad sizga kulib boqar😉";
 	return $temp;
@@ -280,9 +300,6 @@ G'olibimizni qimmatli ochkolarga ega bo'lganligi bilan tabriklaymiz👏👏
 O'yinda nomer odam qatnashdi";
  }
  const B_WINNERS = "G'oliblar";
- const B_TOP_1 = "1 soat";
- const B_TOP_2 = "2 soat";
- const B_TOP_NIGHT = "Tungi";
  function lottery_winners($winners) {
   $temp = "🔹Lotoreya o'yinimizning g'oliblari bo'lgan omadli insonlar bilan tanishing👇\n";
   foreach ($winners as $value) {

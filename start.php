@@ -2,8 +2,17 @@
 		if($user->valid()) {
 			$temp=explode(':',$user->current()->action);
 			if(in_array($temp[0], ['2','3','4','5','6'])) {
-				$db->query('update users set ball=ball+'.ADD_BALL.' where id='.$from->id)->exec();
-				if($temp[0]!='2') $db->update('channels')->set(['status'=>4])->where('id='.$db->escape($temp[1]))->exec();
+				if($temp[0]!='2') {
+					$db->update('channels')->set(['status'=>4])->where('id='.$db->escape($temp[1]))->exec();
+					$type=$db->select('type')->from('channels')->where('id='.$db->escape($temp[1]))->fetch()->current()->type;
+				} else {
+					$type=$temp[1];
+				}
+				$ball=0;
+				if($type==1) $ball=ADD_1_BALL;
+				if($type==2) $ball=ADD_2_BALL;
+				if($type==3) $ball=ADD_NIGHT_BALL;
+				$db->query('update users set ball=ball+'.$ball.' where id='.$from->id)->exec();
 			}
 			$db->query('update users set blocked=NULL where id='.$from->id)->exec();
 		}

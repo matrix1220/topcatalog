@@ -63,6 +63,11 @@ class datebase {
 		$this->query=$q;
 		return $this;
 	}
+	function multiQuery($q) {
+		$temp=@$this->conn->multi_query($q);
+		if(!$temp) throw new Exception('Mysqlda xatolik: '.$this->conn->error);
+		return $temp;
+	}
 	function escape($t) {
 		return "'".$this->conn->escape_string($t)."'";
 	}

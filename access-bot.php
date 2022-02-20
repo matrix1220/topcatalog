@@ -1,10 +1,10 @@
 <?php
 // 438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
-// https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/setWebhook?url=https://yiacatalog.ga/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
+// https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/setWebhook?url=https://tepa.ga/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg&max_connections=10
 // https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/deletewebhook
 // https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/getwebhookinfo
 // https://api.telegram.org/bot438238300:AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg/getUpdates?offset=-1
-// https://yiacatalog.ga/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
+// https://tepa.ga/AAEdydlMXwY81qXWZb4njw7YLhquOeKx0sg
 // dalfincmm
 // 191674575895794
 // TDHhRFHT0INFHG8jOkpWfB0Osow
@@ -18,6 +18,7 @@ require 'buttons.php';
 date_default_timezone_set('Asia/Tashkent');
 mb_internal_encoding('UTF-8');
 ini_set('display_errors', '1');
+ini_set('error_log', './error_log');
 //error_reporting(0);
 //"Tizimda nosozlik! Boshqattan urinib ko'ring."
 $request_time=time();
@@ -111,14 +112,14 @@ if(isset($input->message)) {
 			$winner=@$bot->method('getChat',['chat_id'=>$temp->user]);
 			if($winner->ok) $winner=$winner->result->first_name;
 			else $winner="Shu odam";
-			$wtext="<i>Bugungi</i> <b>LOTOREYA</b> <i>o'ynimiz g'olibi</i> ".'<a href="tg://user?id='.$temp->user.'">'.$winner.'</a>'." <i>bo'ldi.</i>\n<b>G'olibimizni 🔹3333 so'm hamda 🔸333 ochko yutib olganligi bilan tabriklaymiz</b>👏👏\n<i>Lotoreyada ".$all." ta odam qatnashdi</i>";
+			$wtext="<i>Bugungi</i> <b>LOTOREYA</b> <i>o'ynimiz g'olibi</i> ".'<a href="tg://user?id='.$temp->user.'">'.$winner.'</a>'." <i>bo'ldi.</i>\n<b>G'olibimizni 🔹333 ochko yutib olganligi bilan tabriklaymiz👏👏</b>👏👏\n<i>Lotoreyada ".$all." ta odam qatnashdi</i>";
 			$db->insert()->into('lottery_winners')->set(['date'=>time(),'user'=>$temp->user,'name'=>$winner])->exec();
 			$bot->sendMessage(CHANNEL,$wtext);
 			$db->query('update users set ball=ball+333 where id='.$temp->user)->exec();
-			$ids = [];
+			$i=0;
+			$ids=[];
 			foreach ($db->select()->from('lottery')->fetch() as $value) $ids[]=$value->user;
 			$db->delete()->from('lottery')->exec();
-			$i=0;
 			foreach ($ids as $value) {
 				try {
 					$bot->sendMessage($value,$wtext);
@@ -135,78 +136,55 @@ if(isset($input->message)) {
 		if(!isset($input->worker)) $input->worker=0;
 		if($input->worker==0) {
 			$bot->sendMessage(CHANNEL,T_LOTTERY,$bot->inlineKeyboard([[['text'=>'Qatnashish','url'=>'https://telegram.me/CatalogiyaBot?start=3']]]));
-			// $stream=2;
-			// 	$sock = fsockopen("mycrons000.appspot.com", 80, $errno, $errstr, 30);
-			// 	if (!$sock) throw new Exception("$errstr ($errno)");
-			// 	fwrite($sock, "POST /yziosdfsdfdfbfhfyhfnff HTTP/1.0\r\n");
-			// 	fwrite($sock, "Host: mycrons000.appspot.com\r\n");
-			// 	fwrite($sock, "User-Agent: Catalogiyabot\r\n");
-			// 	fwrite($sock, "\r\n");
-			// 	fwrite($sock, json_encode(['worker'=>$stream]));
-			// 	$body = ""; while (!feof($sock)) $body .= fread($sock, 4096);
-			// 	$body = trim(substr($body, strpos($body, "\r\n\r\n")));
-			// 	fclose($sock);
-			// $bot->sendMessage(ADMINS_GROUP,$stream." ta oqim ishga tushirildi");
-		} else {
-			//ignore_user_abort(true);
-			$bot->sendMessage(ADMINS_GROUP,$input->worker."-oqim ishga tushdi");
-			//set_time_limit(60);
-			register_shutdown_function((function($w){
-				global $bot,$i;
-				$bot->sendMessage(ADMINS_GROUP,$w."-oqim tugadi: $i");
-			}),$input->worker);
-			$stime=time();
-			$lsd=mktime(9,0,0);
-			$i=0;
-			while (true) {
-				$temp=$db->query('SELECT * FROM users where (LSD<'.$lsd.' OR LSD is NULL) AND blocked is NULL LIMIT 1')->fetch();
-				if($temp->valid()) {
-					$db->update('users')->set(['LSD'=>time()])->where('id='.$temp->current()->id)->exec();
-					try {
-						$bot->sendMessage($temp->current()->id,T_LOTTERY,$bot->inlineKeyboard([[['text'=>'Qatnashish','url'=>'https://telegram.me/CatalogiyaBot?start=3']]]));
-						$i++;
-					} catch(Exception $e) {
-						error_log($e->getMessage());
-					}
-				} else break;
-				if($stime<time()-100) break;
-			}
 		}
 	} elseif($input->cron=='4') {
 		set_time_limit(0);
 		ignore_user_abort(true);
-		$temp=$db->query('select * from jakpot_winners order by id desc limit 1')->fetch();
+		$temp=$db->query('select * from jakpot_games order by id desc limit 1')->fetch();
 		if($temp->valid()) $id=$temp->current()->id+1; else $id=1;
 		$r=rand(1,30);
+		$db->insert()->into('jakpot_games')->set(['id'=>$id,'number'=>$r,'time'=>time()])->exec();
 		$winners=[];
 		foreach ($db->select()->from('jakpot')->where('number='.$r)->fetch() as $value) $winners[]=$value->user;
+		$text="🔘O'yin $id\n🔢Son $r\n";
 		if(empty($winners)) {
-			$text="jakpot da g'oliblar ($r):\nyo'q";
+			$text.="G'oliblar yo'q";
 		} else {
 			$p=round(500/count($winners));
-			$text="🔘O'yin $id\n🔢Son $r\n";
 			foreach ($winners as $value) {
 				$db->query('update users set ball=ball+'.$p.' where id='.$value)->exec();
-				$temp=@$bot->method("getChat",["chat_id"=>$value]);
-				if($temp->ok) $temp=$temp->result->first_name;
-				else $temp="Foydalanuvchi";
+				try {
+					$temp=@$bot->method("getChat",["chat_id"=>$value]);
+					$temp=$temp->result->first_name;
+				} catch(Exception $e) {
+					$temp="Foydalanuvchi";
+				}
 				$text.='🎗G\'olib <a href="tg://user?id='.$value.'">'.Telegrambot::HTML($temp).'</a>'."\n";
-				$db->insert()->into('jakpot_winners')->set(['id'=>$id,'number'=>$r,'name'=>$temp,'user'=>$value,'time'=>time()])->exec();
+				$db->insert()->into('jakpot_winners')->set(['id'=>$id,'name'=>$temp,'user'=>$value])->exec();
 			}
-			$text.="G'olib(lar)imizni qimmatli ochkolarga ega bo'lganligi bilan tabriklaymiz👏👏\nO'yinda ".count($winners)." odam qatnashdi";
-			foreach ($db->select()->from('jakpot')->fetch() as $value) {
-				$bot->sendMessage($value->user,$text);
+			$text.="G'olib(lar)imizni qimmatli ochkolarga ega bo'lganligi bilan tabriklaymiz👏👏\nO'yinda ".($db->query('select count(*) as c from jakpot')->fetch()->current()->c)." odam qatnashdi";
+		}
+		$i=0;
+		$ids=[];
+		foreach ($db->select()->from('jakpot')->fetch() as $value) $ids[]=$value->user;
+		$db->delete()->from('jakpot')->exec();
+		foreach ($ids as $value) {
+			try {
+				$bot->sendMessage($value,$text);
+				$i++;
+			} catch(Exception $e) {
+				error_log($e->getMessage());
 			}
 		}
-		$db->delete()->from('jakpot')->exec();
+		$bot->sendMessage(ADMINS_GROUP,"jakpot jonatildi: $i");
 		$bot->sendMessage(ADMINS_GROUP,$text);
 	} elseif($input->cron=='5') { // channel default
 		$temp=$db->query('select * from `channels_history` where status=1')->fetch();
 		if($temp->valid()) {
 			$temp=$temp->current();
-			if($temp->type=='1') {
+			if($temp->type=='1' or $temp->type=='0') {
 				$db->update('channels_history')->set(['status'=>0])->where('id='.$temp->id)->exec();
-				$temp=$db->select()->from('channels_history')->where('status=2')->fetch();
+				$temp=$db->select()->from('channels_history')->where('status=2 and type!=3')->fetch();
 				if($temp->valid()) {
 					$temp=$temp->current();
 					$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
@@ -216,7 +194,7 @@ if(isset($input->message)) {
 			} elseif($temp->type=='2') {
 				if(isset($temp->cs) and $temp->cs=='1') {
 					$db->update('channels_history')->set(['status'=>0])->where('id='.$temp->id)->exec();
-					$temp=$db->select()->from('channels_history')->where('status=2')->fetch();
+					$temp=$db->select()->from('channels_history')->where('status=2 and type!=3')->fetch();
 					if($temp->valid()) {
 						$temp=$temp->current();
 						$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
@@ -228,13 +206,16 @@ if(isset($input->message)) {
 				}
 			} elseif($temp->type=='3') {
 				$db->update('channels_history')->set(['status'=>0])->where('id='.$temp->id)->exec();
-				$temp=$temp->current();
-				$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
-				$bot->sendMessage(CHANNEL,CHANNEL_POST($temp1),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp1->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp1->username,1)]]]));
-				$db->update('channels_history')->set(['status'=>1])->where('id='.$temp->id)->exec();
+				$temp=$db->select()->from('channels_history')->where('status=2 and type!=3')->fetch();
+				if($temp->valid()) {
+					$temp=$temp->current();
+					$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
+					$bot->sendMessage(CHANNEL,CHANNEL_POST($temp1),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp1->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp1->username,1)]]]));
+					$db->update('channels_history')->set(['status'=>1])->where('id='.$temp->id)->exec();
+				}
 			}
 		} else {
-			$temp=$db->select()->from('channels_history')->where('status=2')->fetch();
+			$temp=$db->select()->from('channels_history')->where('status=2 and type!=3')->fetch();
 			if($temp->valid()) {
 				$temp=$temp->current();
 				$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
@@ -243,13 +224,48 @@ if(isset($input->message)) {
 			}
 		}
 	} elseif($input->cron=='6') { // channel night
-		$temp=$db->query('select * from `channels_history` where type=2')->fetch();
+		$temp=$db->query('select * from `channels_history` where type=3 and status=2')->fetch();
 		if($temp->valid()) {
 			$temp=$temp->current();
 			$temp1=$db->select()->from('channels')->where('id='.$temp->channel)->fetch()->current();
 			$bot->sendMessage(CHANNEL,CHANNEL_POST($temp1),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp1->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp1->username,1)]]]));
 			$db->update('channels_history')->set(['status'=>1])->where('id='.$temp->id)->exec();
 		}
+	} elseif($input->cron=='7') {//1514989749
+		set_time_limit(0);
+		ignore_user_abort(true);
+		$text="🌀 @YIAMEGA ning 🔹@Catalogiya kanalida o'tkazilgan
+ ENG ENG AKSIYASI 
+o'z nihoyasiga yetdi
+
+Aksiya ikkita nominatsiya bo'yicha o'tkazildi
+
+🔺Eng ko'p LIKE yig'gan kanal
+<a href=\"https://t.me/CaTaloGiya/549\">🎗G'oliblarni ko'rish</a>
+🔻Eng ko'p OCHKO to'plagan obunachi
+<a href=\"https://t.me/CaTaloGiya/824\">🎗G'oliblarni ko'rish</a>
+
+Aksiyada qatnashganlarga, aksiyani o'tkazishda yordam berganlarga hamda
+ 🌀 @YIAMEGA ning barcha a'zolariga o'z minnatdorchiligimizni bildiramiz👍
+
+⚠️Qatnashib yuta olmaganlar aslo xafa bo'lmang 😁
+Hali hammasi oldinda😎
+
+🌀 @YIAMEGA 2017-2018";
+		$temp=$db->query('SELECT * FROM users where (LSD<1514989749 OR LSD is NULL) AND blocked is NULL LIMIT 100')->fetch();
+		$query="";
+		foreach ($temp as $value) {
+			$query.="UPDATE users SET LSD=".time()." WHERE id=".$value->id."; ";
+			//$db->update('users')->set(['LSD'=>time()])->where('id='.$temp->current()->id)->exec();
+			try {
+				$bot->sendMessage($value->id,$text);
+				$i++;
+			} catch(Exception $e) {
+				error_log($e->getMessage());
+			}
+		}
+		$db->multiQuery($query);
+		$bot->sendMessage(ADMINS_GROUP,"100 ta dan $i ta");
 	}
 } elseif(isset($input->inline_query)) {
 	$inline=&$input->inline_query;

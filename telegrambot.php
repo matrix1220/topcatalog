@@ -1,7 +1,7 @@
 <?php
 /**
 * @author The Matrix (https://t.me/matrix_1220)
-* @version 2.0
+* @version 2.X
 * Telegram Bot Client
 */
 class TelegrambotException extends Exception {

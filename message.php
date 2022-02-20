@@ -6,13 +6,9 @@
 					$bot->sendMessage($from->id,'Katalogni tanlang!');
 				} elseif($message->text==B_ADD) {
 					$temp=@$bot->method('getChatMember',['chat_id'=>CHANNEL,'user_id'=>$from->id]);
+					$db->update('users')->set(['action'=>1])->where('id='.$from->id)->exec();
 					if($temp->ok and in_array($temp->result->status,['member','creator','administrator'])) {
-						if($db->select()->from('users')->where('id='.$from->id)->fetch()->current()->ball>=ADD_BALL) {
-							$db->update('users')->set(['action'=>1])->where('id='.$from->id)->exec();
-							$bot->sendMessage($from->id,T_1,$bot->replyKeyboard([[B_YES],[B_BACK]]));
-						} else {
-							$bot->sendMessage($from->id,T_1E_1,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_COLLECT,'7:4')]]));
-						}
+						$bot->sendMessage($from->id,T_1,$bot->replyKeyboard([[B_TOP_1],[B_TOP_2],[B_TOP_NIGHT],[B_BACK]]));
 					} else {
 						$bot->sendMessage($from->id,T_1E_2);
 					}
@@ -52,18 +48,41 @@
 					$bot->sendMessage($from->id,"Tanlang:",$bot->replyKeyboard($EXTRA_KEYBOARD));
 				}
 			} elseif($action[0]==1) {
+				$ball=$db->select('ball')->from('users')->where('id='.$from->id)->fetch()->current()->ball;
 				if($message->text==B_BACK) {
 					$db->update('users')->set(['action'=>0])->where('id='.$from->id)->exec();
 					$bot->sendMessage($from->id,T_0,$bot->replyKeyboard($MAIN_KEYBOARD));
-				} elseif($message->text==B_YES) {
-					$db->query('update users set action=2,ball=ball-'.ADD_BALL.' where id='.$from->id)->exec();
-					$bot->sendMessage($from->id,T_2,$bot->replyKeyboard([[B_BACK]]));
+				} elseif($message->text==B_TOP_1) {
+					if($ball<ADD_1_BALL) {
+						$bot->sendMessage($from->id,T_1E_1,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_COLLECT,'7:4')]]));
+					} else {
+						$db->query('update users set action=\'2:1\',ball=ball-'.ADD_1_BALL.' where id='.$from->id)->exec();
+						$bot->sendMessage($from->id,T_2,$bot->replyKeyboard([[B_BACK]]));
+					}
+				} elseif($message->text==B_TOP_2) {
+					if($ball<ADD_2_BALL) {
+						$bot->sendMessage($from->id,T_1E_1,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_COLLECT,'7:4')]]));
+					} else {
+						$db->query('update users set action=\'2:2\',ball=ball-'.ADD_2_BALL.' where id='.$from->id)->exec();
+						$bot->sendMessage($from->id,T_2,$bot->replyKeyboard([[B_BACK]]));
+					}
+				} elseif($message->text==B_TOP_NIGHT) {
+					if($ball<ADD_NIGHT_BALL) {
+						$bot->sendMessage($from->id,T_1E_1,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_COLLECT,'7:4')]]));
+					} else {
+						$db->query('update users set action=\'2:3\',ball=ball-'.ADD_NIGHT_BALL.' where id='.$from->id)->exec();
+						$bot->sendMessage($from->id,T_2,$bot->replyKeyboard([[B_BACK]]));
+					}
 				} else {
-					$bot->sendMessage($from->id,"Noto'g'ri tanlandi",$bot->replyKeyboard([[B_YES],[B_BACK]]));
+					$bot->sendMessage($from->id,"Noto'g'ri tanlandi",$bot->replyKeyboard([[B_TOP_1],[B_TOP_2],[B_TOP_NIGHT],[B_BACK]]));
 				}
 			} elseif($action[0]==2) {
 				if($message->text==B_BACK) {
-					$db->query('update users set action=0,ball=ball+'.ADD_BALL.' where id='.$from->id)->exec();
+					$ball=0;
+					if($action[1]==1) $ball=ADD_1_BALL;
+					if($action[1]==2) $ball=ADD_2_BALL;
+					if($action[1]==3) $ball=ADD_NIGHT_BALL;
+					$db->query('update users set action=0,ball=ball+'.$ball.' where id='.$from->id)->exec();
 					$bot->sendMessage($message->from->id,T_0,$bot->replyKeyboard($MAIN_KEYBOARD));
 				} else {
                     try {
@@ -75,17 +94,20 @@
 						$temp1=$db->select()->from('channels')->where('telegram_id='.$db->escape($temp->result->id))->fetch();
 						if($temp1->valid()) {
 							$temp1=$temp1->current();
-							if(in_array($temp1->status,['2','1'])) {
+							if($temp1->status=='2') {
 								if($temp1->added==$from->id) {
+									$db->update('channels')->set(['type'=>$action[1]])->where('id='.$temp1->id)->exec();
 									$bot->sendMessage($from->id,T_2E_2,$bot->inlineKeyboard([[$bot->inlineKeyboardButton("Qayta qo'shish",'9:'.$temp1->username.":".$temp1->id)]]));
 								} else {
 									$bot->sendMessage($from->id,T_2E_2);
 								}
-							} elseif($temp1->status==0) {
+							} elseif($temp1->status=="0") {
 								$bot->sendMessage($from->id,T_2E_3);
+							} elseif($temp1->status=="1") {
+								$bot->sendMessage($from->id,"Bu kanal qo'shilgan va uni administratorlar ko'rib chiqmoqda!");
 							} else {
 								$temp1=$temp1->id;
-								$db->update('channels')->set(['added'=>$from->id,'username'=>$message->text,'status'=>0,'telegram_id'=>$temp->result->id,'title'=>$temp->result->title])->where('id='.$temp1)->exec();
+								$db->update('channels')->set(['added'=>$from->id,'username'=>$message->text,'status'=>0,'telegram_id'=>$temp->result->id,'title'=>$temp->result->title,'type'=>$action[1]])->where('id='.$temp1)->exec();
 								$db->update('users')->set(['action'=>'3:'.$temp1])->where('id='.$from->id)->exec();
 								$bot->sendMessage($from->id,T_3,$bot->replyKeyboard($CATEGORYS_KEYBOARD));
 							}
@@ -93,7 +115,7 @@
 							$temp1=$db->query('select id from channels order by id desc limit 1')->fetch();
 							if($temp1->valid()) $temp1=$temp1->current()->id+1;
 							else $temp1=1;
-							$db->insert()->into('channels')->set(['id'=>$temp1,'added'=>$from->id,'username'=>$message->text,'status'=>0,'telegram_id'=>$temp->result->id,'title'=>$temp->result->title])->exec();
+							$db->insert()->into('channels')->set(['id'=>$temp1,'added'=>$from->id,'username'=>$message->text,'status'=>0,'telegram_id'=>$temp->result->id,'title'=>$temp->result->title,'type'=>$action[1]])->exec();
 							$db->update('users')->set(['action'=>'3:'.$temp1])->where('id='.$from->id)->exec();
 							$bot->sendMessage($from->id,T_3,$bot->replyKeyboard($CATEGORYS_KEYBOARD));
 						}
@@ -103,7 +125,8 @@
 				}
 			} elseif($action[0]==3) {
 				if($message->text==B_BACK) {
-					$db->update('users')->set(['action'=>'2'])->where('id='.$from->id)->exec();
+					$type=$db->select('type')->from('channels')->where('id='.$action[1])->fetch()->current()->type;
+					$db->update('users')->set(['action'=>'2:'.$type])->where('id='.$from->id)->exec();
 					$db->update('channels')->set(['status'=>4])->where('id='.$action[1])->exec();
 					$bot->sendMessage($from->id,T_2,$bot->replyKeyboard([[B_BACK]]));
 				} else {
@@ -241,7 +264,11 @@
 				} else {
 					$db->update('channels')->set(['status'=>3])->where('id='.$action[2])->exec();
 					$temp=$db->select()->from('channels')->where('id='.$action[2])->fetch()->current();
-					if($action[1]=='1') $db->query('update users set action=0,ball=ball+'.ADD_BALL.' where id='.$temp->added)->exec();
+					$ball=0;
+					if($temp->type==1) $ball=ADD_1_BALL;
+					if($temp->type==2) $ball=ADD_2_BALL;
+					if($temp->type==3) $ball=ADD_NIGHT_BALL;
+					if($action[1]=='1') $db->query('update users set action=0,ball=ball+'.$ball.' where id='.$temp->added)->exec();
 					$bot->editMessageText(ADMINS_GROUP,$temp->msg_id,T_6R($temp)."\n".'<a href="tg://user?id='.$from->id.'">Administrator</a> qabul qilmadi'."\n[<i>".Telegrambot::HTML($message->text)."</i>]");
 					$bot->sendMessage($temp->added,"Kanalingiz qabul qilinmadi. Sabab:\n<i>".Telegrambot::HTML($message->text)."</i>");
 					$db->update('users')->set(['action'=>0])->where('id='.$from->id)->exec();
@@ -260,7 +287,7 @@
 					$bot->sendMessage($from->id,T_0,$bot->replyKeyboard($MAIN_KEYBOARD));
 				} else {
 					if(in_array($message->text,range(1, 30))) {
-						$db->query('update users set ball=ball-50,action=0 where id='.$from->id)->exec();
+						$db->query('update users set action=0 where id='.$from->id)->exec();
 						$db->insert()->into('jakpot')->set(['user'=>$from->id,'number'=>$message->text])->exec();
 						$bot->sendMessage($from->id,T_15_2(),$bot->replyKeyboard($MAIN_KEYBOARD));
 					} else {

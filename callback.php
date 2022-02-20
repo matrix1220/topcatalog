@@ -49,10 +49,15 @@
 			$db->update('channels')->set(['status'=>2,'likes'=>0,'added_time'=>time()])->where('id='.$db->escape($data[1]))->exec();
 			$bot->editMessageText(ADMINS_GROUP,$message->message_id,T_6R($temp)."\n".'<a href="tg://user?id='.$from->id.'">Administrator</a> qabul qildi');
 			$bot->sendMessage($temp->added,"▪️Kanalingiz qabul qilindi
+Navbatga qarab @Catalogiya kanalida e'lon qilinadi
+
 Shu havola orqali
 https://t.me/CatalogiyaBot?start=1-".$temp->id." yoki Havolani tarqatish orqali kanalingizga Like yig'ing va kanalingizni eng zo'rligini isbotlang
 <b>Batafsil👇👇</b>",$bot->inlineKeyboard([[['text'=>'Tarqatish','switch_inline_query'=>$temp->id]]]));
-			$bot->sendMessage(CHANNEL,CHANNEL_POST($temp),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp->username,1)]]]));
+			$id=$db->query('select `id` from channels_history order by id desc limit 1')->fetch();
+			if($id->valid()) $id=$id->current()->id+1; else $id=1;
+			$db->insert()->into('channels_history')->set(['id'=>$id,'channel'=>$temp->id,'type'=>$temp->type,'status'=>'2'])->exec();
+			//$bot->sendMessage(CHANNEL,CHANNEL_POST($temp),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_LIKE,'0:'.$temp->id.':0')],[['text'=>B_SUBSCRIBE,'url'=>'https://telegram.me/'.substr($temp->username,1)]]]));
 		} else {
 			$bot->answerCallbackQuery($callback->id,['text'=>'Bu kanal boshqa holatda']);
 		}
@@ -204,12 +209,16 @@ https://t.me/CatalogiyaBot?start=1-".$temp->id." yoki Havolani tarqatish orqali 
 			$bot->answerCallbackQuery($callback->id,['text'=>T_15E()],true);
 		} else {
 			$temp=$db->select()->from('users')->where('id='.$from->id)->fetch();
-			if($temp->valid() and $temp->current()->ball>=50) {
-				$bot->answerCallbackQuery($callback->id,['text'=>T_15_1]);
-				$db->update('users')->set(['action'=>15])->where('id='.$from->id)->exec();
-				$bot->sendMessage($from->id,T_15_1,$bot->removeReplyKeyboard());
-			} else {
-				$bot->answerCallbackQuery($callback->id,['text'=>"Sizda yetarli ochko mavjud emas"],true);
+			if($temp->valid()) {
+				$temp=@$bot->method('getChatMember',['chat_id'=>CHANNEL,'user_id'=>$from->id]);
+				if($temp->ok and in_array($temp->result->status,['member','creator','administrator'])) {
+					$bot->answerCallbackQuery($callback->id,['text'=>T_15_1]);
+					$db->update('users')->set(['action'=>15])->where('id='.$from->id)->exec();
+					$bot->sendMessage($from->id,T_15_1,$bot->removeReplyKeyboard());
+				} else {
+					$bot->answerCallbackQuery($callback->id);
+					$bot->sendMessage($from->id,T_1E_2,$bot->removeReplyKeyboard());
+				}
 			}
 		}
 	} elseif($data[0]==='11') {
@@ -280,18 +289,7 @@ https://t.me/CatalogiyaBot?start=1-".$temp->id." yoki Havolani tarqatish orqali 
 			$bot->answerCallbackQuery($callback->id,['text'=>'Yangilandi']);
 		}
 	} elseif($data[0]==='12') {
-		$bot->answerCallbackQuery($callback->id,['text'=>B_ADD]);
-		$temp=@$bot->method('getChatMember',['chat_id'=>CHANNEL,'user_id'=>$from->id]);
-		if($temp->ok and in_array($temp->result->status,['member','creator','administrator'])) {
-			if($db->select()->from('users')->where('id='.$from->id)->fetch()->current()->ball>=ADD_BALL) {
-				$db->update('users')->set(['action'=>1])->where('id='.$from->id)->exec();
-				$bot->sendMessage($from->id,T_1,$bot->replyKeyboard([[B_YES],[B_BACK]]));
-			} else {
-				$bot->sendMessage($from->id,T_1E_1,$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_COLLECT,'7:4')]]));
-			}
-		} else {
-			$bot->sendMessage($from->id,T_1E_2);
-		}
+		// bu funksiya olib tashlandi
 	} elseif($data[0]==='13') {
 		if($from->id!=$data[1]) {
 			$user=$db->select()->from('users')->where('id='.$db->escape($data[1]))->fetch();
@@ -324,11 +322,16 @@ https://t.me/CatalogiyaBot?start=1-".$temp->id." yoki Havolani tarqatish orqali 
 	} elseif($data[0]==='14') {
 		if(isset($data[1])) $current=$data[1]; else $current=mktime(0,0,0);
 		$next=$current-3600*24; $prev=$current+3600*24;
-		$temp=$db->query("select * from jakpot_winners where `time`>=".$current.' and `time`<'.$prev)->fetch();
+		$w=[];
+		foreach ($db->query("select * from jakpot_games where `time`>=".$current.' and `time`<'.$prev)->fetch() as $value) {
+			$temp=[];
+			foreach ($db->query('select * from jakpot_winners where id='.$value->id)->fetch() as $value1) $temp[]=['user'=>$value1->user,'name'=>$value1->name];
+			$w[]=['id'=>$value->id,'number'=>$value->number,'winners'=>$temp];
+		}
 		// if($temp->valid()) {
 			$bot->answerCallbackQuery($callback->id);
 			try {
-				$bot->editMessageText($from->id,$message->message_id,date("d.m.y",$current)." ".jakpot_winners($temp),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_PREV,'14:'.$prev),$bot->inlineKeyboardButton(B_NEXT,'14:'.$next)]]));
+				$bot->editMessageText($from->id,$message->message_id,date("d.m.y",$current)." ".jakpot_winners($w),$bot->inlineKeyboard([[$bot->inlineKeyboardButton(B_PREV,'14:'.$prev),$bot->inlineKeyboardButton(B_NEXT,'14:'.$next)]]));
 			} catch(Exception $e) {
 				
 			}
